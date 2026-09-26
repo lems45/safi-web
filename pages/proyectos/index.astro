@@ -1,0 +1,29 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import PageHero from "../../components/PageHero.astro";
+import ProjectCard from "../../components/ProjectCard.astro";
+import { proyectos } from "../../data/site";
+---
+
+<Layout
+  title="Proyectos | SAFI"
+  description="Conoce los proyectos actuales de SAFI."
+>
+  <PageHero
+    eyebrow="PROGRAMAS SAFI"
+    title="DEL CONCEPTO"
+    outline="A LA MISIÓN."
+    description="Vehículos, plataformas y sistemas experimentales desarrollados dentro de los equipos SAFI."
+    image="/images/projects-hero.jpg"
+  />
+
+  <section class="section">
+    <div class="container grid-2">
+      {
+        proyectos.map((proyecto) => (
+          <ProjectCard proyecto={proyecto} />
+        ))
+      }
+    </div>
+  </section>
+</Layout>

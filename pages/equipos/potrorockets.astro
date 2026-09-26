@@ -1,0 +1,237 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import PageHero from "../../components/PageHero.astro";
+import ProjectCard from "../../components/ProjectCard.astro";
+import OfficialLogo from "../../components/OfficialLogo.astro";
+import { proyectos } from "../../data/site";
+
+const proyectosPotro = proyectos.filter(
+  (proyecto) => proyecto.equipo === "PotroRockets"
+);
+
+const areas = [
+  {
+    numero: "01",
+    titulo: "Aeroestructuras",
+    descripcion:
+      "Diseña la estructura del fuselaje y las aletas, optimiza cargas, resistencia aerodinámica y peso, fabrica y ensambla componentes y valida mediante pruebas de carga y vibración.",
+    capacidades: ["Fuselaje","Aletas","Materiales","Manufactura","Pruebas de carga","Vibración"]
+  },
+  {
+    numero: "02",
+    titulo: "Propulsión",
+    descripcion:
+      "Diseña y prueba motores experimentales y estudia el desempeño del empuje y la estabilidad térmica.",
+    capacidades: ["Diseño de motores","Pruebas","Propelentes","Empuje","Estabilidad térmica"]
+  },
+  {
+    numero: "03",
+    titulo: "Recuperación",
+    descripcion:
+      "Diseña paracaídas y mecanismos de despliegue, desarrolla estrategias de aterrizaje seguro y realiza ensayos de resistencia.",
+    capacidades: ["Paracaídas","Despliegue","Descenso","Aterrizaje","Ensayos"]
+  },
+  {
+    numero: "04",
+    titulo: "Aviónica",
+    descripcion:
+      "Desarrolla sistemas de control y navegación, integra sensores y telemetría y diseña la electrónica de comunicación durante el vuelo.",
+    capacidades: ["Control","Navegación","Sensores","Telemetría","Electrónica"]
+  },
+  {
+    numero: "05",
+    titulo: "Logística",
+    descripcion:
+      "Planifica recursos y materiales, coordina ensayos y lanzamientos y gestiona tiempos y necesidades operativas de cada misión.",
+    capacidades: ["Recursos","Materiales","Ensayos","Lanzamientos","Gestión de tiempos"]
+  }
+];
+---
+
+<Layout
+  title="PotroRockets | SAFI"
+  description="Equipo de cohetería experimental de SAFI."
+>
+  <PageHero
+    eyebrow="SAFI / COHETERÍA EXPERIMENTAL"
+    title="POTROROCKETS"
+    outline="EQUIPO"
+    description="Equipo SAFI dedicado al desarrollo integral de vehículos de cohetería experimental."
+    image="/images/team-potrorockets.jpg"
+  />
+
+  <section class="section">
+    <div class="container two">
+      <div>
+        <div class="team-identity">
+          <OfficialLogo
+            type="potrorockets"
+            size="large"
+            alt="PotroRockets"
+          />
+          <OfficialLogo
+            type="safi"
+            size="small"
+            alt="SAFI"
+          />
+        </div>
+
+        <div class="label">POTROROCKETS</div>
+
+        <h2 class="title">
+          COHETERÍA<br />
+          <span>EXPERIMENTAL.</span>
+        </h2>
+      </div>
+
+      <p class="lead">
+        PotroRockets transforma una misión en un sistema completo mediante
+        cinco áreas oficiales de trabajo.
+      </p>
+    </div>
+  </section>
+
+  <section class="section areas">
+    <div class="container">
+      <div class="label">NUESTRAS ÁREAS DE TRABAJO</div>
+
+      <h2 class="title">
+        CINCO FRENTES.<br />
+        <span>UNA MISIÓN.</span>
+      </h2>
+
+      <div class="area-grid">
+        {
+          areas.map((area) => (
+            <article class="area reveal">
+              <div class="top">
+                <span>{area.numero}</span>
+                <span>SAFI</span>
+              </div>
+
+              <h3>{area.titulo}</h3>
+              <p>{area.descripcion}</p>
+
+              <div class="chips">
+                {area.capacidades.map((c) => <span>{c}</span>)}
+              </div>
+            </article>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <section class="section proyectos">
+    <div class="container">
+      <div class="label">PROYECTOS POTROROCKETS</div>
+
+      <h2 class="title">
+        PROYECTOS<br />
+        <span>ACTUALES.</span>
+      </h2>
+
+      <div class="projects-grid">
+        {
+          proyectosPotro.map((proyecto) => (
+            <ProjectCard proyecto={proyecto} />
+          ))
+        }
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .team-identity {
+    margin-bottom: 30px;
+    display: flex;
+    align-items: center;
+    gap: 24px;
+  }
+
+
+  .two {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 90px;
+  }
+
+  .areas { background: #070a0f; }
+
+  .area-grid {
+    margin-top: 55px;
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+  }
+
+  .area {
+    min-height: 380px;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid var(--border);
+    background: #080c12;
+  }
+
+  .area:last-child {
+    grid-column: 1 / -1;
+    min-height: 320px;
+  }
+
+  .top {
+    display: flex;
+    justify-content: space-between;
+    color: #525c67;
+    font-size: 8px;
+  }
+
+  .area h3 {
+    margin: 75px 0 17px;
+    font: 500 28px var(--display);
+  }
+
+  .area p {
+    color: var(--muted);
+    font-size: 12px;
+    line-height: 1.8;
+  }
+
+  .chips {
+    margin-top: auto;
+    padding-top: 25px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 7px;
+  }
+
+  .chips span {
+    padding: 7px 9px;
+    border: 1px solid #313a44;
+    color: #aab2bb;
+    font-size: 7px;
+  }
+
+  .proyectos { background: var(--bg); }
+
+  .projects-grid {
+    margin-top: 50px;
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    gap: 18px;
+  }
+
+  @media(max-width:900px) {
+    .two { grid-template-columns: 1fr; }
+    .projects-grid { grid-template-columns: 1fr 1fr; }
+  }
+
+  @media(max-width:650px) {
+    .area-grid,
+    .projects-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .area:last-child { grid-column: auto; }
+  }
+</style>

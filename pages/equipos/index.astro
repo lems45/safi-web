@@ -1,0 +1,112 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import PageHero from "../../components/PageHero.astro";
+import SafeImage from "../../components/SafeImage.astro";
+import OfficialLogo from "../../components/OfficialLogo.astro";
+import { equipos } from "../../data/site";
+---
+
+<Layout
+  title="Equipos | SAFI"
+  description="Conoce los equipos especializados que forman parte de SAFI."
+>
+  <PageHero
+    eyebrow="ECOSISTEMA SAFI"
+    title="EQUIPOS"
+    outline="ESPECIALIZADOS."
+    description="Diferentes plataformas, una misma organización y una cultura compartida de ingeniería."
+    image="/images/teams-hero.jpg"
+  />
+
+  <section class="section">
+    <div class="container grid-2">
+      {
+        equipos.map((equipo, index) => (
+          <a class="team reveal" href={`/equipos/${equipo.slug}`}>
+            <span class="number">0{index + 1}</span>
+
+            <div class="image">
+              <SafeImage
+                src={equipo.imagen}
+                alt={equipo.nombre}
+              />
+            </div>
+
+            <div class="content">
+              <OfficialLogo
+                type={equipo.slug === "potrorockets" ? "potrorockets" : "cansat"}
+                size="medium"
+                alt={equipo.nombre}
+              />
+
+              <small>{equipo.subtitulo}</small>
+              <h2>{equipo.nombre}</h2>
+              <p>{equipo.descripcion}</p>
+              <b>CONOCER EQUIPO ↗</b>
+            </div>
+          </a>
+        ))
+      }
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .team {
+    position: relative;
+    border: 1px solid var(--border);
+    color: inherit;
+    text-decoration: none;
+    background: #080c12;
+    overflow: hidden;
+  }
+
+  .number {
+    position: absolute;
+    z-index: 3;
+    top: 18px;
+    right: 18px;
+    padding: 7px;
+    background: rgba(5,8,13,.75);
+    font-size: 8px;
+  }
+
+  .image {
+    height: 330px;
+    overflow: hidden;
+  }
+
+  .image :global(img) {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .content {
+    padding: 28px;
+  }
+
+  .content > small {
+    display: block;
+    margin-top: 22px;
+    color: var(--accent);
+    font-size: 8px;
+  }
+
+  .content h2 {
+    margin: 8px 0;
+    font: 600 38px var(--display);
+  }
+
+  .content p {
+    color: var(--muted);
+    font-size: 12px;
+    line-height: 1.8;
+  }
+
+  .content b {
+    display: block;
+    margin-top: 25px;
+    font-size: 8px;
+  }
+</style>
