@@ -21,12 +21,12 @@ export const equipos = [
     ]
   },
   {
-    slug: "cansat",
-    nombre: "CanSat",
-    subtitulo: "SISTEMAS AEROESPACIALES COMPACTOS",
+    slug: "dyson_swarm",
+    nombre: "Dyson Swarm",
+    subtitulo: "SATÉLITES ENLATADOS",
     descripcion:
       "Equipo SAFI dedicado al desarrollo de plataformas CanSat, electrónica, comunicaciones, sensores, software y misiones experimentales.",
-    imagen: "/images/team-cansat.jpg",
+    imagen: "/images/dyson_team.jpg",
     areas: [
       "Electrónica",
       "Sensores",
@@ -120,11 +120,11 @@ export const proyectos = [
   },
   {
     slug: "cansat",
-    equipo: "CanSat",
-    categoria: "SISTEMAS AEROESPACIALES COMPACTOS",
-    titulo: "CanSat",
+    equipo: "Dyson Swarm",
+    categoria: "SATÉLITES ENLATADOS",
+    titulo: "Dyson Swarm",
     estado: "ACTIVO",
-    imagen: "/images/project-cansat.jpg",
+    imagen: "/images/logos/dyson_swarm.png",
     hero: "/images/cansat-hero.jpg",
     resumen:
       "Plataforma compacta para desarrollar misiones de sensado, comunicaciones y sistemas aeroespaciales.",

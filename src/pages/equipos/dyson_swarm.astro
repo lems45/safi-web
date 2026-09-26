@@ -1,0 +1,2017 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import SafeImage from "../../components/SafeImage.astro";
+import { withBase } from "../../utils/base";
+
+const competenciasUrl = withBase("/competencias");
+const uneteUrl = withBase("/unete");
+
+const areas = [
+  {
+    numero: "01",
+    codigo: "SYS",
+    titulo: "SISTEMAS",
+    descripcion:
+      "Diseño e integración de la arquitectura completa del CanSat, desde la distribución interna hasta la interacción entre subsistemas."
+  },
+  {
+    numero: "02",
+    codigo: "AVN",
+    titulo: "AVIÓNICA",
+    descripcion:
+      "Sensores, adquisición de datos, procesamiento embebido y electrónica encargada de registrar el comportamiento de la misión."
+  },
+  {
+    numero: "03",
+    codigo: "COM",
+    titulo: "TELEMETRÍA",
+    descripcion:
+      "Comunicación entre el vehículo y la estación terrena para transmitir información de vuelo y supervisar la misión en tiempo real."
+  },
+  {
+    numero: "04",
+    codigo: "REC",
+    titulo: "RECUPERACIÓN",
+    descripcion:
+      "Diseño de los mecanismos que permiten un descenso controlado, estable y seguro después del despliegue."
+  },
+  {
+    numero: "05",
+    codigo: "PAY",
+    titulo: "CARGA ÚTIL",
+    descripcion:
+      "Desarrollo de experimentos y sistemas capaces de cumplir los objetivos específicos definidos para cada misión."
+  },
+  {
+    numero: "06",
+    codigo: "GND",
+    titulo: "ESTACIÓN TERRENA",
+    descripcion:
+      "Recepción, visualización y almacenamiento de los datos transmitidos durante las distintas fases de operación."
+  }
+];
+
+const pipeline = [
+  {
+    numero: "01",
+    titulo: "DEFINIR",
+    texto:
+      "Traducir los requisitos de una competencia o experimento en objetivos técnicos verificables."
+  },
+  {
+    numero: "02",
+    titulo: "DISEÑAR",
+    texto:
+      "Desarrollar electrónica, software, estructura, comunicaciones y recuperación como un único sistema."
+  },
+  {
+    numero: "03",
+    titulo: "INTEGRAR",
+    texto:
+      "Conectar y validar los subsistemas antes de llevar el vehículo a condiciones reales de operación."
+  },
+  {
+    numero: "04",
+    titulo: "OPERAR",
+    texto:
+      "Ejecutar la misión, recibir telemetría y analizar el comportamiento del sistema."
+  }
+];
+---
+
+<Layout
+  title="Dyson Swarm | SAFI"
+  description="Dyson Swarm es el equipo de SAFI dedicado al diseño, desarrollo e integración de sistemas CanSat."
+>
+  <section class="hero">
+    <div class="hero-image">
+      <SafeImage
+        src="/images/dyson-swarm-hero.jpg"
+        alt="Equipo Dyson Swarm de SAFI"
+        loading="eager"
+        fetchpriority="high"
+      />
+    </div>
+
+    <div class="hero-overlay"></div>
+    <div class="hero-grid"></div>
+
+    <div class="orbital orbital-one"></div>
+    <div class="orbital orbital-two"></div>
+
+    <div class="hero-shell">
+      <div class="container hero-content">
+        <div class="breadcrumb">
+          SAFI / EQUIPOS / DYSON SWARM
+        </div>
+
+        <div class="hero-main">
+          <div class="hero-copy">
+            <div class="status">
+              <span class="status-dot"></span>
+              CANSAT DEVELOPMENT TEAM
+            </div>
+
+            <div class="team-mark">
+              <span>DS</span>
+              <div></div>
+            </div>
+
+            <h1>
+              <span class="title-solid">DYSON</span>
+              <span class="title-outline">SWARM.</span>
+            </h1>
+
+            <p class="hero-description">
+              Ingeniería compacta para misiones que integran sensores,
+              comunicaciones, software, recuperación y experimentación dentro
+              de una plataforma del tamaño de una lata.
+            </p>
+
+            <div class="hero-actions">
+              <a href="#equipo" class="button button-primary">
+                EXPLORAR EQUIPO ↓
+              </a>
+
+              <a href={uneteUrl} class="button button-secondary">
+                UNIRME AL EQUIPO ↗
+              </a>
+            </div>
+          </div>
+
+          <aside class="mission-console">
+            <div class="console-header">
+              <span>TEAM // STATUS</span>
+
+              <span class="online">
+                <i></i>
+                ACTIVE
+              </span>
+            </div>
+
+            <div class="console-title">
+              <small>DESIGNATION</small>
+              <strong>DYSON SWARM</strong>
+            </div>
+
+            <div class="console-data">
+              <div>
+                <small>ORGANIZACIÓN</small>
+                <strong>SAFI</strong>
+              </div>
+
+              <div>
+                <small>PLATAFORMA</small>
+                <strong>CanSat</strong>
+              </div>
+
+              <div>
+                <small>ÁREA</small>
+                <strong>Sistemas espaciales</strong>
+              </div>
+
+              <div>
+                <small>ESTADO</small>
+                <strong>Desarrollo activo</strong>
+              </div>
+            </div>
+
+            <div class="signal">
+              {
+                Array.from({ length: 24 }).map((_, index) => (
+                  <span style={`--i:${index}`}></span>
+                ))
+              }
+            </div>
+
+            <div class="coordinates">
+              <span>SAFI // UAEMÉX</span>
+              <span>LINK ESTABLISHED</span>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </div>
+
+    <div class="scroll-indicator">
+      <span>SCROLL TO EXPLORE</span>
+      <div></div>
+    </div>
+  </section>
+
+  <section id="equipo" class="section intro">
+    <div class="container intro-grid">
+      <div class="intro-heading reveal">
+        <div class="label">THE TEAM</div>
+
+        <h2 class="title">
+          UN SATÉLITE.<br />
+          <span>TODO UN SISTEMA.</span>
+        </h2>
+      </div>
+
+      <div class="intro-copy reveal">
+        <p class="lead">
+          Dyson Swarm es el equipo de SAFI dedicado al desarrollo de
+          plataformas CanSat y sistemas electrónicos para misiones
+          experimentales.
+        </p>
+
+        <p>
+          Un CanSat concentra dentro de un volumen reducido los elementos
+          fundamentales de una misión aeroespacial: sensado, procesamiento,
+          comunicaciones, energía, recuperación, software y operación desde
+          tierra.
+        </p>
+
+        <p>
+          El objetivo del equipo es utilizar estas plataformas como un
+          laboratorio de ingeniería donde distintas disciplinas convergen y
+          deben funcionar de forma coordinada durante toda la misión.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="system-section">
+    <div class="container system-grid">
+      <div class="system-visual reveal">
+        <div class="visual-frame">
+          <SafeImage
+            src="/images/dyson-swarm-cansat.jpg"
+            alt="CanSat desarrollado por Dyson Swarm"
+          />
+
+          <div class="visual-corner top-left"></div>
+          <div class="visual-corner top-right"></div>
+          <div class="visual-corner bottom-left"></div>
+          <div class="visual-corner bottom-right"></div>
+
+          <div class="visual-tag tag-one">
+            <span>01</span>
+            AVIONICS
+          </div>
+
+          <div class="visual-tag tag-two">
+            <span>02</span>
+            TELEMETRY
+          </div>
+
+          <div class="visual-tag tag-three">
+            <span>03</span>
+            RECOVERY
+          </div>
+        </div>
+      </div>
+
+      <div class="system-content reveal">
+        <div class="label">COMPACT SPACE SYSTEM</div>
+
+        <h2>
+          INGENIERÍA<br />
+          <span>EN ESCALA.</span>
+        </h2>
+
+        <p>
+          El tamaño del vehículo obliga a optimizar cada decisión: masa,
+          distribución, consumo energético, comunicaciones, resistencia
+          estructural y capacidad de procesamiento.
+        </p>
+
+        <div class="system-specs">
+          <div>
+            <small>01</small>
+            <strong>DISEÑO MULTIDISCIPLINARIO</strong>
+          </div>
+
+          <div>
+            <small>02</small>
+            <strong>INTEGRACIÓN ELECTRÓNICA</strong>
+          </div>
+
+          <div>
+            <small>03</small>
+            <strong>OPERACIÓN EN TIEMPO REAL</strong>
+          </div>
+
+          <div>
+            <small>04</small>
+            <strong>VALIDACIÓN EXPERIMENTAL</strong>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section areas-section">
+    <div class="container">
+      <div class="section-heading reveal">
+        <div>
+          <div class="label">SYSTEM ARCHITECTURE</div>
+
+          <h2 class="title">
+            SEIS FRENTES.<br />
+            <span>UNA MISIÓN.</span>
+          </h2>
+        </div>
+
+        <p>
+          Cada subsistema desarrolla una función específica, pero el éxito
+          depende de que todos puedan operar como una única plataforma.
+        </p>
+      </div>
+
+      <div class="areas-grid">
+        {
+          areas.map((area) => (
+            <article class="area-card reveal">
+              <header>
+                <span class="area-number">{area.numero}</span>
+                <span class="area-code">{area.codigo}</span>
+              </header>
+
+              <div class="area-line"></div>
+
+              <h3>{area.titulo}</h3>
+
+              <p>{area.descripcion}</p>
+
+              <footer>
+                <span>DYSON SWARM</span>
+                <span>+</span>
+              </footer>
+            </article>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <section class="telemetry-strip">
+    <div class="telemetry-track">
+      <span>DYSON SWARM</span>
+      <i></i>
+      <span>CANSAT</span>
+      <i></i>
+      <span>AVIONICS</span>
+      <i></i>
+      <span>TELEMETRY</span>
+      <i></i>
+      <span>MISSION SYSTEMS</span>
+      <i></i>
+      <span>SAFI UAEMÉX</span>
+      <i></i>
+
+      <span>DYSON SWARM</span>
+      <i></i>
+      <span>CANSAT</span>
+      <i></i>
+      <span>AVIONICS</span>
+      <i></i>
+      <span>TELEMETRY</span>
+      <i></i>
+      <span>MISSION SYSTEMS</span>
+      <i></i>
+      <span>SAFI UAEMÉX</span>
+      <i></i>
+    </div>
+  </section>
+
+  <section class="section workflow">
+    <div class="container">
+      <div class="workflow-heading reveal">
+        <div class="label">MISSION PIPELINE</div>
+
+        <h2 class="title">
+          DE UNA IDEA<br />
+          <span>A UNA MISIÓN.</span>
+        </h2>
+      </div>
+
+      <div class="workflow-grid">
+        {
+          pipeline.map((item) => (
+            <article class="workflow-item reveal">
+              <div class="workflow-number">
+                {item.numero}
+              </div>
+
+              <div class="workflow-content">
+                <small>PHASE {item.numero}</small>
+
+                <h3>{item.titulo}</h3>
+
+                <p>{item.texto}</p>
+              </div>
+            </article>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <section class="section legacy">
+    <div class="container legacy-grid">
+      <div class="legacy-copy reveal">
+        <div class="label">FLIGHT HERITAGE</div>
+
+        <h2 class="title">
+          EXPERIENCIA<br />
+          <span>ACUMULADA.</span>
+        </h2>
+
+        <p class="lead">
+          El desarrollo de sistemas CanSat forma parte de la historia de SAFI
+          desde las primeras generaciones del capítulo.
+        </p>
+
+        <a href={competenciasUrl} class="text-link">
+          EXPLORAR COMPETENCIAS →
+        </a>
+      </div>
+
+      <div class="legacy-cards">
+        <article class="legacy-card reveal">
+          <div class="legacy-year">2021</div>
+
+          <div>
+            <small>SATBEE-I</small>
+
+            <h3>CanSat CUCEI</h3>
+
+            <p>
+              Participación de SAFI en la competencia CanSat organizada por
+              CUCEI.
+            </p>
+          </div>
+
+          <span class="legacy-index">01</span>
+        </article>
+
+        <article class="legacy-card reveal">
+          <div class="legacy-year">2023</div>
+
+          <div>
+            <small>SATBEE-II</small>
+
+            <h3>CanSat Competition</h3>
+
+            <p>
+              SAFI llevó nuevamente el desarrollo de sistemas CanSat a una
+              competencia internacional.
+            </p>
+          </div>
+
+          <span class="legacy-index">02</span>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="join-section">
+    <div class="join-grid"></div>
+
+    <div class="container join-content reveal">
+      <div class="join-symbol">
+        <span></span>
+        <span></span>
+        <div>DS</div>
+      </div>
+
+      <div class="label">JOIN THE SWARM</div>
+
+      <h2>
+        CONSTRUYE LA<br />
+        <span>PRÓXIMA MISIÓN.</span>
+      </h2>
+
+      <p>
+        Electrónica, programación, diseño mecánico, comunicaciones,
+        recuperación, experimentación y operación se encuentran dentro de una
+        misma plataforma.
+      </p>
+
+      <a href={uneteUrl} class="button button-primary">
+        FORMAR PARTE DE DYSON SWARM ↗
+      </a>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .hero {
+    position: relative;
+
+    min-height: calc(100vh - 78px);
+
+    overflow: hidden;
+
+    display: flex;
+    align-items: center;
+
+    background: #05080d;
+
+    border-bottom: 1px solid var(--border);
+  }
+
+  .hero-image {
+    position: absolute;
+    inset: 0;
+  }
+
+  .hero-image :global(img) {
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+    object-position: center;
+
+    opacity: 0.42;
+  }
+
+  .hero-overlay {
+    position: absolute;
+    inset: 0;
+
+    background:
+      linear-gradient(
+        90deg,
+        rgba(5, 8, 13, 0.99) 0%,
+        rgba(5, 8, 13, 0.95) 31%,
+        rgba(5, 8, 13, 0.74) 58%,
+        rgba(5, 8, 13, 0.86) 100%
+      ),
+      linear-gradient(
+        0deg,
+        #05080d 0%,
+        rgba(5, 8, 13, 0.22) 28%,
+        transparent 55%
+      );
+  }
+
+  .hero-grid,
+  .join-grid {
+    position: absolute;
+    inset: 0;
+
+    pointer-events: none;
+
+    opacity: 0.1;
+
+    background-image:
+      linear-gradient(
+        rgba(115, 255, 157, 0.28) 1px,
+        transparent 1px
+      ),
+      linear-gradient(
+        90deg,
+        rgba(115, 255, 157, 0.28) 1px,
+        transparent 1px
+      );
+
+    background-size: 68px 68px;
+  }
+
+  .orbital {
+    position: absolute;
+
+    border: 1px solid rgba(115, 255, 157, 0.14);
+
+    border-radius: 50%;
+
+    pointer-events: none;
+  }
+
+  .orbital::before {
+    content: "";
+
+    position: absolute;
+
+    width: 8px;
+    height: 8px;
+
+    top: 50%;
+    left: -4px;
+
+    border-radius: 50%;
+
+    background: var(--accent);
+
+    box-shadow:
+      0 0 10px var(--accent),
+      0 0 30px rgba(115, 255, 157, 0.5);
+  }
+
+  .orbital-one {
+    width: 620px;
+    height: 620px;
+
+    right: -220px;
+    top: -180px;
+
+    transform: rotate(28deg);
+  }
+
+  .orbital-two {
+    width: 420px;
+    height: 420px;
+
+    right: 8%;
+    bottom: -270px;
+
+    transform: rotate(-35deg);
+  }
+
+  .hero-shell {
+    position: relative;
+
+    width: 100%;
+
+    z-index: 3;
+
+    padding: 0 24px;
+  }
+
+  .hero-content {
+    width: 100%;
+
+    padding-top: 72px;
+    padding-bottom: 92px;
+  }
+
+  .breadcrumb {
+    margin-bottom: 58px;
+
+    color: #68727c;
+
+    font-family: monospace;
+    font-size: 9px;
+    letter-spacing: 0.22em;
+  }
+
+  .hero-main {
+    display: grid;
+
+    grid-template-columns:
+      minmax(0, 1.08fr)
+      minmax(360px, 0.72fr);
+
+    gap: clamp(60px, 7vw, 120px);
+
+    align-items: center;
+  }
+
+  .hero-copy {
+    min-width: 0;
+
+    padding-right: 12px;
+  }
+
+  .status {
+    display: flex;
+    align-items: center;
+
+    gap: 10px;
+
+    margin-bottom: 28px;
+
+    color: var(--accent);
+
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+  }
+
+  .status-dot {
+    width: 7px;
+    height: 7px;
+
+    border-radius: 50%;
+
+    background: var(--accent);
+
+    box-shadow:
+      0 0 12px rgba(115, 255, 157, 0.8);
+  }
+
+  .team-mark {
+    display: flex;
+    align-items: center;
+
+    gap: 14px;
+
+    margin-bottom: 16px;
+  }
+
+  .team-mark span {
+    color: var(--accent);
+
+    font-family: monospace;
+    font-size: 10px;
+    letter-spacing: 0.18em;
+  }
+
+  .team-mark div {
+    width: 70px;
+    height: 1px;
+
+    background: var(--accent);
+  }
+
+  .hero h1 {
+    display: flex;
+    flex-direction: column;
+
+    margin: 0;
+
+    font-family: "Space Grotesk", sans-serif;
+
+    font-size: clamp(4.8rem, 7.8vw, 8.4rem);
+
+    font-weight: 700;
+
+    line-height: 0.79;
+
+    letter-spacing: -0.065em;
+  }
+
+  .title-solid {
+    display: block;
+
+    color: var(--text);
+  }
+
+  .title-outline {
+    display: block;
+
+    color: transparent;
+
+    -webkit-text-stroke:
+      1.2px rgba(244, 245, 246, 0.38);
+  }
+
+  .hero-description {
+    max-width: 620px;
+
+    margin: 42px 0 0;
+
+    color: #9ba4ae;
+
+    font-size: 14px;
+
+    line-height: 1.9;
+  }
+
+  .hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+
+    gap: 12px;
+
+    margin-top: 38px;
+  }
+
+  .button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    min-height: 46px;
+
+    padding: 0 20px;
+
+    border: 1px solid;
+
+    text-decoration: none;
+
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+
+    transition:
+      background 0.2s ease,
+      color 0.2s ease,
+      border-color 0.2s ease;
+  }
+
+  .button-primary {
+    background: var(--accent) !important;
+
+    border-color: var(--accent) !important;
+
+    color: #05080d !important;
+  }
+
+  .button-primary:hover {
+    background: #a1ffbc !important;
+
+    border-color: #a1ffbc !important;
+  }
+
+  .button-secondary {
+    background: transparent !important;
+
+    border-color:
+      rgba(255, 255, 255, 0.2) !important;
+
+    color: var(--text) !important;
+  }
+
+  .button-secondary:hover {
+    background:
+      rgba(115, 255, 157, 0.04) !important;
+
+    border-color: var(--accent) !important;
+
+    color: var(--accent) !important;
+  }
+
+  .mission-console {
+    position: relative;
+
+    width: 100%;
+
+    max-width: 520px;
+
+    justify-self: end;
+
+    padding: 22px;
+
+    background:
+      rgba(7, 11, 16, 0.82);
+
+    border:
+      1px solid rgba(255, 255, 255, 0.12);
+
+    backdrop-filter: blur(14px);
+  }
+
+  .mission-console::before,
+  .mission-console::after {
+    content: "";
+
+    position: absolute;
+
+    width: 16px;
+    height: 16px;
+  }
+
+  .mission-console::before {
+    top: -1px;
+    left: -1px;
+
+    border-top:
+      1px solid var(--accent);
+
+    border-left:
+      1px solid var(--accent);
+  }
+
+  .mission-console::after {
+    right: -1px;
+    bottom: -1px;
+
+    border-right:
+      1px solid var(--accent);
+
+    border-bottom:
+      1px solid var(--accent);
+  }
+
+  .console-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    padding-bottom: 16px;
+
+    border-bottom:
+      1px solid rgba(255, 255, 255, 0.08);
+
+    color: #6f7a84;
+
+    font-family: monospace;
+    font-size: 8px;
+
+    letter-spacing: 0.15em;
+  }
+
+  .online {
+    display: flex;
+    align-items: center;
+
+    gap: 7px;
+
+    color: var(--accent);
+  }
+
+  .online i {
+    display: block;
+
+    width: 5px;
+    height: 5px;
+
+    border-radius: 50%;
+
+    background: var(--accent);
+  }
+
+  .console-title {
+    padding: 28px 0 24px;
+  }
+
+  .console-title small,
+  .console-data small {
+    display: block;
+
+    margin-bottom: 5px;
+
+    color: #5f6973;
+
+    font-family: monospace;
+    font-size: 7px;
+
+    letter-spacing: 0.13em;
+  }
+
+  .console-title strong {
+    font-family: "Space Grotesk", sans-serif;
+
+    font-size: 24px;
+
+    letter-spacing: -0.03em;
+  }
+
+  .console-data {
+    display: grid;
+
+    grid-template-columns:
+      1fr 1fr;
+
+    border-top:
+      1px solid rgba(255, 255, 255, 0.07);
+
+    border-left:
+      1px solid rgba(255, 255, 255, 0.07);
+  }
+
+  .console-data > div {
+    padding: 15px 14px;
+
+    border-right:
+      1px solid rgba(255, 255, 255, 0.07);
+
+    border-bottom:
+      1px solid rgba(255, 255, 255, 0.07);
+  }
+
+  .console-data strong {
+    color: #dce0e3;
+
+    font-size: 10px;
+
+    font-weight: 500;
+  }
+
+  .signal {
+    display: flex;
+    align-items: flex-end;
+
+    gap: 3px;
+
+    height: 54px;
+
+    margin-top: 22px;
+
+    padding: 8px 0;
+  }
+
+  .signal span {
+    flex: 1;
+
+    height:
+      calc(10px + (var(--i) % 7) * 5px);
+
+    max-height: 38px;
+
+    background:
+      rgba(115, 255, 157, 0.35);
+
+    border-top:
+      1px solid var(--accent);
+  }
+
+  .coordinates {
+    display: flex;
+
+    justify-content: space-between;
+
+    gap: 20px;
+
+    margin-top: 7px;
+
+    color: #58636d;
+
+    font-family: monospace;
+
+    font-size: 7px;
+
+    letter-spacing: 0.12em;
+  }
+
+  .scroll-indicator {
+    position: absolute;
+
+    z-index: 5;
+
+    left: 18px;
+    bottom: 32px;
+
+    display: flex;
+    align-items: center;
+
+    gap: 12px;
+
+    transform:
+      rotate(-90deg)
+      translateX(100%);
+
+    transform-origin: left bottom;
+
+    color: #5b6670;
+
+    font-family: monospace;
+
+    font-size: 7px;
+
+    letter-spacing: 0.2em;
+  }
+
+  .scroll-indicator div {
+    width: 42px;
+    height: 1px;
+
+    background: #5b6670;
+  }
+
+  .intro {
+    background: var(--bg);
+  }
+
+  .intro-grid {
+    display: grid;
+
+    grid-template-columns:
+      1fr 1fr;
+
+    gap: 110px;
+  }
+
+  .intro-copy .lead {
+    margin-top: 0;
+
+    color: #e4e7e9;
+
+    font-size:
+      clamp(1.25rem, 2vw, 1.75rem);
+
+    line-height: 1.55;
+  }
+
+  .intro-copy p:not(.lead) {
+    color: var(--muted);
+
+    font-size: 13px;
+
+    line-height: 1.9;
+  }
+
+  .system-section {
+    padding: 130px 0;
+
+    background: #070a0f;
+
+    border-top:
+      1px solid var(--border);
+
+    border-bottom:
+      1px solid var(--border);
+  }
+
+  .system-grid {
+    display: grid;
+
+    grid-template-columns:
+      minmax(0, 1.05fr)
+      minmax(320px, 0.75fr);
+
+    gap: 100px;
+
+    align-items: center;
+  }
+
+  .visual-frame {
+    position: relative;
+
+    height: 630px;
+
+    padding: 22px;
+
+    background: #05080d;
+
+    border:
+      1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .visual-frame :global(img) {
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    filter: saturate(0.78);
+  }
+
+  .visual-frame::after {
+    content: "";
+
+    position: absolute;
+
+    inset: 22px;
+
+    pointer-events: none;
+
+    background:
+      linear-gradient(
+        180deg,
+        transparent 60%,
+        rgba(5, 8, 13, 0.75)
+      );
+  }
+
+  .visual-corner {
+    position: absolute;
+
+    width: 18px;
+    height: 18px;
+
+    z-index: 3;
+  }
+
+  .top-left {
+    left: 10px;
+    top: 10px;
+
+    border-left:
+      1px solid var(--accent);
+
+    border-top:
+      1px solid var(--accent);
+  }
+
+  .top-right {
+    right: 10px;
+    top: 10px;
+
+    border-right:
+      1px solid var(--accent);
+
+    border-top:
+      1px solid var(--accent);
+  }
+
+  .bottom-left {
+    left: 10px;
+    bottom: 10px;
+
+    border-left:
+      1px solid var(--accent);
+
+    border-bottom:
+      1px solid var(--accent);
+  }
+
+  .bottom-right {
+    right: 10px;
+    bottom: 10px;
+
+    border-right:
+      1px solid var(--accent);
+
+    border-bottom:
+      1px solid var(--accent);
+  }
+
+  .visual-tag {
+    position: absolute;
+
+    z-index: 4;
+
+    display: flex;
+    align-items: center;
+
+    gap: 8px;
+
+    padding: 8px 10px;
+
+    background:
+      rgba(5, 8, 13, 0.9);
+
+    border:
+      1px solid rgba(115, 255, 157, 0.35);
+
+    color: #d9dfe3;
+
+    font-family: monospace;
+
+    font-size: 8px;
+
+    letter-spacing: 0.12em;
+  }
+
+  .visual-tag span {
+    color: var(--accent);
+  }
+
+  .tag-one {
+    top: 18%;
+    right: -20px;
+  }
+
+  .tag-two {
+    top: 48%;
+    left: -20px;
+  }
+
+  .tag-three {
+    right: -20px;
+    bottom: 17%;
+  }
+
+  .system-content h2 {
+    margin: 20px 0 30px;
+
+    font-family:
+      "Space Grotesk", sans-serif;
+
+    font-size:
+      clamp(3rem, 5vw, 5.4rem);
+
+    line-height: 0.91;
+
+    letter-spacing: -0.06em;
+  }
+
+  .system-content h2 span {
+    color: transparent;
+
+    -webkit-text-stroke:
+      1px rgba(244, 245, 246, 0.38);
+  }
+
+  .system-content > p {
+    color: var(--muted);
+
+    font-size: 13px;
+
+    line-height: 1.9;
+  }
+
+  .system-specs {
+    margin-top: 38px;
+
+    border-top:
+      1px solid var(--border);
+  }
+
+  .system-specs > div {
+    display: grid;
+
+    grid-template-columns:
+      46px 1fr;
+
+    gap: 14px;
+
+    padding: 16px 0;
+
+    border-bottom:
+      1px solid var(--border);
+  }
+
+  .system-specs small {
+    color: var(--accent);
+
+    font-family: monospace;
+
+    font-size: 9px;
+  }
+
+  .system-specs strong {
+    color: #cdd3d7;
+
+    font-size: 10px;
+
+    letter-spacing: 0.1em;
+  }
+
+  .areas-section {
+    background: var(--bg);
+  }
+
+  .section-heading {
+    display: grid;
+
+    grid-template-columns:
+      1fr 0.65fr;
+
+    gap: 80px;
+
+    align-items: end;
+
+    margin-bottom: 65px;
+  }
+
+  .section-heading > p {
+    max-width: 470px;
+
+    margin: 0;
+
+    color: var(--muted);
+
+    font-size: 13px;
+
+    line-height: 1.9;
+  }
+
+  .areas-grid {
+    display: grid;
+
+    grid-template-columns:
+      repeat(3, 1fr);
+
+    border-top:
+      1px solid var(--border);
+
+    border-left:
+      1px solid var(--border);
+  }
+
+  .area-card {
+    min-height: 340px;
+
+    padding: 28px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    background: #070a0f;
+
+    border-right:
+      1px solid var(--border);
+
+    border-bottom:
+      1px solid var(--border);
+
+    transition:
+      background 0.25s ease,
+      transform 0.25s ease;
+  }
+
+  .area-card:hover {
+    background: #0a0f15;
+
+    transform:
+      translateY(-3px);
+  }
+
+  .area-card header,
+  .area-card footer {
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+  }
+
+  .area-number {
+    color: #535e68;
+
+    font-family: monospace;
+
+    font-size: 9px;
+  }
+
+  .area-code {
+    color: var(--accent);
+
+    font-family: monospace;
+
+    font-size: 8px;
+
+    letter-spacing: 0.14em;
+  }
+
+  .area-line {
+    width: 35px;
+    height: 1px;
+
+    margin: 40px 0 24px;
+
+    background: var(--accent);
+  }
+
+  .area-card h3 {
+    margin: 0 0 16px;
+
+    font-family:
+      "Space Grotesk", sans-serif;
+
+    font-size: 1.65rem;
+
+    letter-spacing: -0.035em;
+  }
+
+  .area-card p {
+    margin: 0;
+
+    color: var(--muted);
+
+    font-size: 12px;
+
+    line-height: 1.8;
+  }
+
+  .area-card footer {
+    margin-top: auto;
+
+    padding-top: 28px;
+
+    color: #4d5862;
+
+    font-family: monospace;
+
+    font-size: 7px;
+
+    letter-spacing: 0.15em;
+  }
+
+  .area-card footer span:last-child {
+    color: var(--accent);
+
+    font-size: 15px;
+  }
+
+  .telemetry-strip {
+    overflow: hidden;
+
+    padding: 16px 0;
+
+    background: var(--accent);
+  }
+
+  .telemetry-track {
+    width: max-content;
+
+    display: flex;
+    align-items: center;
+
+    gap: 28px;
+
+    animation:
+      telemetryScroll
+      25s linear
+      infinite;
+
+    color: #05080d;
+
+    font-family: monospace;
+
+    font-size: 9px;
+
+    font-weight: 700;
+
+    letter-spacing: 0.18em;
+  }
+
+  .telemetry-track i {
+    display: block;
+
+    width: 4px;
+    height: 4px;
+
+    border-radius: 50%;
+
+    background: #05080d;
+  }
+
+  @keyframes telemetryScroll {
+    from {
+      transform:
+        translateX(0);
+    }
+
+    to {
+      transform:
+        translateX(-50%);
+    }
+  }
+
+  .workflow {
+    background: #070a0f;
+  }
+
+  .workflow-heading {
+    margin-bottom: 70px;
+  }
+
+  .workflow-grid {
+    border-top:
+      1px solid var(--border);
+  }
+
+  .workflow-item {
+    display: grid;
+
+    grid-template-columns:
+      130px 1fr;
+
+    min-height: 180px;
+
+    border-bottom:
+      1px solid var(--border);
+  }
+
+  .workflow-number {
+    display: flex;
+    align-items: center;
+
+    color: var(--accent);
+
+    font-family:
+      "Space Grotesk", sans-serif;
+
+    font-size: 2.4rem;
+
+    border-right:
+      1px solid var(--border);
+  }
+
+  .workflow-content {
+    padding: 32px 40px;
+
+    display: grid;
+
+    grid-template-columns:
+      150px 220px 1fr;
+
+    gap: 40px;
+
+    align-items: center;
+  }
+
+  .workflow-content small {
+    color: #59636c;
+
+    font-family: monospace;
+
+    font-size: 8px;
+
+    letter-spacing: 0.16em;
+  }
+
+  .workflow-content h3 {
+    margin: 0;
+
+    font-size: 1.5rem;
+  }
+
+  .workflow-content p {
+    margin: 0;
+
+    max-width: 550px;
+
+    color: var(--muted);
+
+    font-size: 12px;
+
+    line-height: 1.8;
+  }
+
+  .legacy {
+    background: var(--bg);
+  }
+
+  .legacy-grid {
+    display: grid;
+
+    grid-template-columns:
+      0.65fr 1fr;
+
+    gap: 100px;
+  }
+
+  .legacy-copy .lead {
+    max-width: 420px;
+
+    color: var(--muted);
+
+    font-size: 13px;
+
+    line-height: 1.9;
+  }
+
+  .text-link {
+    display: inline-block;
+
+    margin-top: 25px;
+
+    color: var(--accent);
+
+    text-decoration: none;
+
+    font-size: 9px;
+
+    font-weight: 700;
+
+    letter-spacing: 0.15em;
+  }
+
+  .legacy-cards {
+    border-top:
+      1px solid var(--border);
+  }
+
+  .legacy-card {
+    position: relative;
+
+    display: grid;
+
+    grid-template-columns:
+      100px 1fr 50px;
+
+    gap: 30px;
+
+    padding: 32px 0;
+
+    border-bottom:
+      1px solid var(--border);
+  }
+
+  .legacy-year {
+    color: var(--accent);
+
+    font-family:
+      "Space Grotesk", sans-serif;
+
+    font-size: 1.7rem;
+  }
+
+  .legacy-card small {
+    color: #65707a;
+
+    font-family: monospace;
+
+    font-size: 8px;
+
+    letter-spacing: 0.15em;
+  }
+
+  .legacy-card h3 {
+    margin: 8px 0 10px;
+
+    font-size: 1.3rem;
+  }
+
+  .legacy-card p {
+    margin: 0;
+
+    color: var(--muted);
+
+    font-size: 12px;
+
+    line-height: 1.75;
+  }
+
+  .legacy-index {
+    align-self: center;
+
+    color: #36404a;
+
+    font-family: monospace;
+
+    font-size: 9px;
+  }
+
+  .join-section {
+    position: relative;
+
+    overflow: hidden;
+
+    padding: 150px 0;
+
+    text-align: center;
+
+    background:
+      radial-gradient(
+        circle at center,
+        rgba(115, 255, 157, 0.1),
+        transparent 42%
+      ),
+      #05080d;
+
+    border-top:
+      1px solid var(--border);
+  }
+
+  .join-content {
+    position: relative;
+
+    z-index: 3;
+
+    max-width: 850px;
+  }
+
+  .join-symbol {
+    position: relative;
+
+    width: 120px;
+    height: 120px;
+
+    margin: 0 auto 36px;
+  }
+
+  .join-symbol span {
+    position: absolute;
+
+    inset: 0;
+
+    border:
+      1px solid rgba(115, 255, 157, 0.3);
+
+    border-radius: 50%;
+  }
+
+  .join-symbol span:first-child {
+    transform:
+      rotateX(68deg);
+  }
+
+  .join-symbol span:nth-child(2) {
+    transform:
+      rotateY(68deg);
+  }
+
+  .join-symbol div {
+    position: absolute;
+
+    inset: 0;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    color: var(--accent);
+
+    font-family: monospace;
+
+    font-size: 14px;
+
+    font-weight: 700;
+
+    letter-spacing: 0.08em;
+  }
+
+  .join-section h2 {
+    margin: 20px 0 28px;
+
+    font-family:
+      "Space Grotesk", sans-serif;
+
+    font-size:
+      clamp(3.4rem, 7vw, 7rem);
+
+    line-height: 0.86;
+
+    letter-spacing: -0.065em;
+  }
+
+  .join-section h2 span {
+    color: transparent;
+
+    -webkit-text-stroke:
+      1px rgba(244, 245, 246, 0.38);
+  }
+
+  .join-section p {
+    max-width: 600px;
+
+    margin: 0 auto 35px;
+
+    color: var(--muted);
+
+    font-size: 13px;
+
+    line-height: 1.9;
+  }
+
+  @media (max-width: 1200px) {
+    .hero h1 {
+      font-size:
+        clamp(4.6rem, 7.2vw, 7.4rem);
+    }
+
+    .hero-main {
+      gap: 65px;
+    }
+
+    .mission-console {
+      max-width: 470px;
+    }
+  }
+
+  @media (max-width: 1050px) {
+    .hero-main,
+    .system-grid {
+      grid-template-columns: 1fr;
+
+      gap: 70px;
+    }
+
+    .hero-copy {
+      max-width: 820px;
+    }
+
+    .mission-console {
+      justify-self: start;
+
+      max-width: 620px;
+    }
+
+    .intro-grid,
+    .legacy-grid {
+      gap: 60px;
+    }
+
+    .areas-grid {
+      grid-template-columns:
+        repeat(2, 1fr);
+    }
+
+    .workflow-content {
+      grid-template-columns:
+        110px 180px 1fr;
+
+      gap: 25px;
+    }
+  }
+
+  @media (max-width: 760px) {
+    .hero {
+      min-height: auto;
+    }
+
+    .hero-shell {
+      padding: 0 16px;
+    }
+
+    .hero-content {
+      padding-top: 55px;
+      padding-bottom: 70px;
+    }
+
+    .breadcrumb {
+      margin-bottom: 42px;
+    }
+
+    .hero h1 {
+      font-size:
+        clamp(3.9rem, 18vw, 5.8rem);
+
+      line-height: 0.82;
+    }
+
+    .hero-description {
+      margin-top: 34px;
+    }
+
+    .hero-main {
+      gap: 55px;
+    }
+
+    .mission-console {
+      width: 100%;
+
+      max-width: none;
+    }
+
+    .scroll-indicator {
+      display: none;
+    }
+
+    .orbital {
+      opacity: 0.45;
+    }
+
+    .intro-grid,
+    .section-heading,
+    .legacy-grid {
+      grid-template-columns: 1fr;
+
+      gap: 38px;
+    }
+
+    .system-section {
+      padding: 90px 0;
+    }
+
+    .visual-frame {
+      height: 520px;
+    }
+
+    .tag-one,
+    .tag-three {
+      right: 6px;
+    }
+
+    .tag-two {
+      left: 6px;
+    }
+
+    .areas-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .workflow-item {
+      grid-template-columns:
+        65px 1fr;
+    }
+
+    .workflow-number {
+      font-size: 1.5rem;
+    }
+
+    .workflow-content {
+      padding: 28px 24px;
+
+      grid-template-columns: 1fr;
+
+      gap: 10px;
+    }
+
+    .legacy-card {
+      grid-template-columns:
+        80px 1fr;
+
+      gap: 20px;
+    }
+
+    .legacy-index {
+      display: none;
+    }
+
+    .join-section {
+      padding: 110px 0;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .hero-shell {
+      padding: 0 12px;
+    }
+
+    .hero h1 {
+      font-size:
+        clamp(3.5rem, 18vw, 5rem);
+    }
+
+    .console-data {
+      grid-template-columns: 1fr;
+    }
+
+    .hero-actions {
+      flex-direction: column;
+    }
+
+    .button {
+      width: 100%;
+    }
+
+    .visual-frame {
+      height: 440px;
+
+      padding: 12px;
+    }
+
+    .visual-frame::after {
+      inset: 12px;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .telemetry-track {
+      animation: none;
+    }
+  }
+</style>
