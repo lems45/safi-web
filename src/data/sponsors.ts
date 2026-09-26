@@ -13,7 +13,7 @@ export const patrocinadores = [
 
 {
     nombre: "Ansys",
-    logo: "/images/sponsors/ansys.png",
+    logo: "/images/sponsors/ansyssynopsys.png",
     url: "https://ansys.synopsys.com/"
   },
 
