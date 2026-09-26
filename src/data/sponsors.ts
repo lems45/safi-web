@@ -10,4 +10,29 @@ export const patrocinadores = [
     url: "https://empresa.com"
   }
   */
+
+{
+    nombre: "Ansys",
+    logo: "/images/sponsors/ansys.png",
+    url: "https://ansys.synopsys.com/"
+  },
+
+{
+    nombre: "Solidworks",
+    logo: "/images/sponsors/solidworks.png",
+    url: "https://www.solidworks.com/es"
+  },
+
+{
+    nombre: "Universidad Autónoma del Estado de México",
+    logo: "/images/sponsors/uaemex.png",
+    url: "https://www.uaemex.mx/"
+  },
+
+{
+    nombre: "Facultad de Ingeniería (UAEMéx)",
+    logo: "/images/sponsors/fi.png",
+    url: "https://ingenieria.uaemex.mx/"
+  }
+
 ];
