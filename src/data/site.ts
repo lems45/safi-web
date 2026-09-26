@@ -118,35 +118,7 @@ export const proyectos = [
       ["Seguridad", "Pruebas progresivas y modos de contingencia."]
     ]
   },
-  {
-    slug: "cansat",
-    equipo: "Dyson Swarm",
-    categoria: "SATÉLITES ENLATADOS",
-    titulo: "Dyson Swarm",
-    estado: "ACTIVO",
-    imagen: "/images/logos/dyson_swarm.png",
-    hero: "/images/cansat-hero.jpg",
-    resumen:
-      "Plataforma compacta para desarrollar misiones de sensado, comunicaciones y sistemas aeroespaciales.",
-    descripcion:
-      "El programa CanSat permite desarrollar ciclos completos de misión en una plataforma compacta: requisitos, electrónica, energía, comunicaciones, software, integración y recuperación.",
-    especificaciones: [
-      ["PLATAFORMA", "CanSat"],
-      ["MISIÓN", "Experimental"],
-      ["AVIÓNICA", "Integrada"],
-      ["COMUNICACIONES", "Telemetría"],
-      ["SOFTWARE", "Misión y tierra"],
-      ["ESTADO", "Activo"]
-    ],
-    sistemas: [
-      ["Aviónica", "Computadora de misión y electrónica embarcada."],
-      ["Sensores", "Adquisición de variables relevantes para la misión."],
-      ["Comunicaciones", "Enlace entre plataforma y estación terrestre."],
-      ["Software", "Firmware, procesamiento, visualización y lógica de misión."],
-      ["Energía", "Distribución y administración eléctrica."],
-      ["Integración", "Validación del sistema completo antes de la misión."]
-    ]
-  }
+
 ];
 
 export const reclutamiento = {
