@@ -2,6 +2,7 @@
 import Layout from "../../layouts/Layout.astro";
 import SafeImage from "../../components/SafeImage.astro";
 import OfficialLogo from "../../components/OfficialLogo.astro";
+import { withBase } from "../../utils/base";
 ---
 
 <Layout
@@ -276,7 +277,7 @@ import OfficialLogo from "../../components/OfficialLogo.astro";
         </h2>
       </div>
 
-      <a href="/competencias/lasc-2026">
+      <a href={withBase("/competencias/lasc-2026")}>
         <span>EXPLORAR COMPETENCIA</span>
         <b>↗</b>
       </a>

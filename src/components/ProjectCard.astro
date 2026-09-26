@@ -1,11 +1,12 @@
 ---
 import SafeImage from "./SafeImage.astro";
+import { withBase } from "../utils/base";
 const { proyecto } = Astro.props;
 ---
 
 <a
   class="card reveal"
-  href={`/proyectos/${proyecto.slug}`}
+  href={withBase(`/proyectos/${proyecto.slug}`)}
 >
   <div class="img">
     <SafeImage

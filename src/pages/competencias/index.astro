@@ -3,6 +3,7 @@ import Layout from "../../layouts/Layout.astro";
 import PageHero from "../../components/PageHero.astro";
 import SafeImage from "../../components/SafeImage.astro";
 import { competencias } from "../../data/competitions";
+import { withBase } from "../../utils/base";
 ---
 
 <Layout
@@ -47,7 +48,7 @@ import { competencias } from "../../data/competitions";
 
             <a
               class="card"
-              href={`/competencias/${competencia.slug}`}
+              href={withBase(`/competencias/${competencia.slug}`)}
             >
               <div class="image">
                 <SafeImage

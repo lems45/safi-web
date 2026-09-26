@@ -4,6 +4,7 @@ import PageHero from "../../components/PageHero.astro";
 import SafeImage from "../../components/SafeImage.astro";
 import OfficialLogo from "../../components/OfficialLogo.astro";
 import { equipos } from "../../data/site";
+import { withBase } from "../../utils/base";
 ---
 
 <Layout
@@ -22,7 +23,7 @@ import { equipos } from "../../data/site";
     <div class="container grid-2">
       {
         equipos.map((equipo, index) => (
-          <a class="team reveal" href={`/equipos/${equipo.slug}`}>
+          <a class="team reveal" href={withBase(`/equipos/${equipo.slug}`)}>
             <span class="number">0{index + 1}</span>
 
             <div class="image">

@@ -15,15 +15,13 @@ import { configuracion } from "../data/site";
     title="CONSTRUYAMOS"
     outline="JUNTOS."
     description="La colaboración con empresas e instituciones permite convertir proyectos universitarios en sistemas capaces de ser construidos, probados y operados."
-    image="/images/sponsors-hero.png"
+    image="/images/sponsors-hero.jpg"
   />
 
   <section class="section">
     <div class="container grid-2">
       <div>
-        <div class="label">
-          ¿POR QUÉ APOYAR A SAFI?
-        </div>
+        <div class="label">¿POR QUÉ APOYAR A SAFI?</div>
 
         <h2 class="title">
           APOYAR<br />
@@ -41,59 +39,33 @@ import { configuracion } from "../data/site";
     <div class="container proofs">
       <article>
         <span>01</span>
-
-        <strong>
-          TRAYECTORIA
-        </strong>
-
-        <p>
-          Participaciones documentadas desde 2021.
-        </p>
+        <strong>TRAYECTORIA</strong>
+        <p>Participaciones documentadas desde 2021.</p>
       </article>
 
       <article>
         <span>02</span>
-
-        <strong>
-          COMPETENCIAS
-        </strong>
-
-        <p>
-          Experiencia en ENMICE, CanSat Competition y LASC.
-        </p>
+        <strong>COMPETENCIAS</strong>
+        <p>Experiencia en ENMICE, CanSat Competition y LASC.</p>
       </article>
 
       <article>
         <span>03</span>
-
-        <strong>
-          RESULTADOS
-        </strong>
-
-        <p>
-          1.er lugar en la categoría de 5 km de ENMICE 2025.
-        </p>
+        <strong>RESULTADOS</strong>
+        <p>1.er lugar en la categoría de 5 km de ENMICE 2025.</p>
       </article>
 
       <article>
         <span>04</span>
-
-        <strong>
-          FORMACIÓN
-        </strong>
-
-        <p>
-          Experiencia técnica y desarrollo de capacidades estudiantiles.
-        </p>
+        <strong>FORMACIÓN</strong>
+        <p>Experiencia técnica y desarrollo de capacidades estudiantiles.</p>
       </article>
     </div>
   </section>
 
   <section class="section dark">
     <div class="container">
-      <div class="label">
-        FORMAS DE COLABORAR
-      </div>
+      <div class="label">FORMAS DE COLABORAR</div>
 
       <h2 class="title">
         CAPACIDADES QUE<br />
@@ -103,60 +75,34 @@ import { configuracion } from "../data/site";
       <div class="proofs">
         <article>
           <span>01</span>
-
-          <strong>
-            TECNOLOGÍA
-          </strong>
-
-          <p>
-            Sensores, electrónica, telecomunicaciones e instrumentación.
-          </p>
+          <strong>TECNOLOGÍA</strong>
+          <p>Sensores, electrónica, telecomunicaciones e instrumentación.</p>
         </article>
 
         <article>
           <span>02</span>
-
-          <strong>
-            MANUFACTURA
-          </strong>
-
-          <p>
-            CNC, impresión 3D, materiales, composites y procesos.
-          </p>
+          <strong>MANUFACTURA</strong>
+          <p>CNC, impresión 3D, materiales, composites y procesos.</p>
         </article>
 
         <article>
           <span>03</span>
-
-          <strong>
-            OPERACIÓN
-          </strong>
-
-          <p>
-            Herramientas, infraestructura, transporte y logística.
-          </p>
+          <strong>OPERACIÓN</strong>
+          <p>Herramientas, infraestructura, transporte y logística.</p>
         </article>
 
         <article>
           <span>04</span>
-
-          <strong>
-            FINANCIAMIENTO
-          </strong>
-
-          <p>
-            Pruebas, materiales, competencias e investigación.
-          </p>
+          <strong>FINANCIAMIENTO</strong>
+          <p>Pruebas, materiales, competencias e investigación.</p>
         </article>
       </div>
     </div>
   </section>
 
-  <section class="section sponsors-section">
+  <section class="section">
     <div class="container">
-      <div class="label">
-        PATROCINADORES ACTUALES
-      </div>
+      <div class="label">PATROCINADORES ACTUALES</div>
 
       <h2 class="title">
         QUIENES YA<br />
@@ -171,18 +117,13 @@ import { configuracion } from "../data/site";
                   href={patrocinador.url || "#"}
                   target={patrocinador.url ? "_blank" : undefined}
                   rel={patrocinador.url ? "noopener" : undefined}
-                  class="sponsor-card"
                 >
-                  <div class="logo-wrapper">
-                    <SafeImage
-                      src={patrocinador.logo}
-                      alt={patrocinador.nombre}
-                    />
-                  </div>
+                  <SafeImage
+                    src={patrocinador.logo}
+                    alt={patrocinador.nombre}
+                  />
 
-                  <span class="sponsor-name">
-                    {patrocinador.nombre}
-                  </span>
+                  <span>{patrocinador.nombre}</span>
                 </a>
               ))
             : (
@@ -206,9 +147,7 @@ import { configuracion } from "../data/site";
   <section class="section dark">
     <div class="container contact">
       <div>
-        <div class="label">
-          COLABORACIÓN
-        </div>
+        <div class="label">COLABORACIÓN</div>
 
         <h2>
           ¿QUIERES APOYAR<br />
@@ -222,13 +161,8 @@ import { configuracion } from "../data/site";
       </div>
 
       <a href={`mailto:${configuracion.correo}`}>
-        <span>
-          CONTACTAR A SAFI
-        </span>
-
-        <b>
-          ↗
-        </b>
+        <span>CONTACTAR A SAFI</span>
+        <b>↗</b>
       </a>
     </div>
   </section>
@@ -237,290 +171,149 @@ import { configuracion } from "../data/site";
 <style>
   .proofs {
     margin-top: 55px;
-
     display: grid;
-    grid-template-columns:
-      repeat(4,1fr);
+    grid-template-columns: repeat(4,1fr);
   }
 
   .proofs article {
     min-height: 240px;
-
     padding: 26px;
-
-    border:
-      1px solid var(--border);
-
+    border: 1px solid var(--border);
     background: #080c12;
   }
 
   .proofs span {
     color: #505964;
-
     font-size: 8px;
   }
 
   .proofs strong {
     display: block;
-
     margin-top: 70px;
-
-    font-family: var(--display);
-    font-size: 17px;
-    font-weight: 500;
+    font: 500 17px var(--display);
   }
 
   .proofs p {
     color: var(--muted);
-
     font-size: 11px;
     line-height: 1.75;
   }
 
-  .dark {
-    background: #070a0f;
-  }
-
-  .sponsors-section {
-    background: var(--bg);
-  }
-
-  /* ===================================================== */
-  /* PATROCINADORES */
-  /* ===================================================== */
+  .dark { background: #070a0f; }
 
   .sponsors {
     margin-top: 50px;
-
     display: grid;
-    grid-template-columns:
-      repeat(4,1fr);
-
-    gap: 16px;
+    grid-template-columns: repeat(4,1fr);
+    gap: 14px;
   }
 
-  .sponsor-card {
+  .sponsors a {
     min-height: 190px;
-
-    padding: 28px;
-
+    padding: 25px;
     display: flex;
     flex-direction: column;
-    align-items: center;
     justify-content: center;
-
-    border:
-      1px solid var(--border);
-
+    align-items: center;
     background: #080c12;
-
-    color: white;
-
+    color: var(--text);
+    border: 1px solid var(--border);
     text-decoration: none;
-
     text-align: center;
-
-    transition:
-      transform .3s ease,
-      border-color .3s ease,
-      background .3s ease;
+    transition: .25s ease;
   }
 
-  .sponsor-card:hover {
-    transform:
-      translateY(-4px);
-
-    border-color:
-      rgba(115,255,157,.45);
-
-    background:
-      #0c1118;
+  .sponsors a:hover {
+    border-color: var(--accent);
+    transform: translateY(-3px);
   }
 
-  .logo-wrapper {
-    width: 100%;
-    min-height: 110px;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  .logo-wrapper :global(img) {
-    display: block;
-
+  .sponsors a :global(img) {
     width: auto;
-    height: auto;
-
     max-width: 90%;
+    height: auto;
     max-height: 100px;
-
     object-fit: contain;
-
     background: transparent;
   }
 
-  .sponsor-name {
-    margin-top: 20px;
-
-    color: #c7cdd3;
-
-    font-size: 9px;
-    font-weight: 600;
-
-    letter-spacing: .08em;
+  .sponsors a span {
+    margin-top: 18px;
+    font-weight: 700;
   }
 
-  /* ===================================================== */
-  /* PLACEHOLDER */
-  /* ===================================================== */
-
   .placeholder {
-    grid-column:
-      1 / -1;
-
-    border:
-      1px dashed #3a444e;
-
+    grid-column: 1 / -1;
+    border: 1px dashed #3a444e;
     overflow: hidden;
-
-    background:
-      #080c12;
   }
 
   .placeholder :global(img) {
     width: 100%;
-
     max-height: 360px;
-
     object-fit: cover;
   }
 
   .placeholder p {
     padding: 18px 25px;
-
     color: var(--muted);
-
-    font-size: 11px;
   }
-
-  /* ===================================================== */
-  /* CONTACTO */
-  /* ===================================================== */
 
   .contact {
     padding: 65px;
-
     display: grid;
-    grid-template-columns:
-      1fr auto;
-
+    grid-template-columns: 1fr auto;
     gap: 60px;
-
     align-items: center;
-
-    border:
-      1px solid var(--border);
+    border: 1px solid var(--border);
   }
 
   .contact h2 {
-    margin:
-      15px 0 20px;
-
-    font-family: var(--display);
-    font-size:
-      clamp(50px,6vw,82px);
-    font-weight: 600;
-
-    line-height: .9;
-
-    letter-spacing: -.05em;
+    margin: 15px 0 20px;
+    font: 600 clamp(50px,6vw,82px)/.9 var(--display);
   }
 
-  .contact h2 span {
-    color: var(--accent);
-  }
+  .contact h2 span { color: var(--accent); }
 
   .contact p {
     max-width: 620px;
-
     color: var(--muted);
-
-    font-size: 13px;
-    line-height: 1.8;
   }
 
   .contact > a {
     width: 195px;
     height: 195px;
-
     padding: 25px;
-
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-
-    background:
-      var(--accent);
-
-    color:
-      #05080d;
-
-    text-decoration:
-      none;
-
+    background: var(--accent);
+    color: #05080d;
+    text-decoration: none;
     font-size: 9px;
     font-weight: 800;
-
-    letter-spacing: .1em;
   }
 
   .contact > a b {
-    align-self:
-      flex-end;
-
-    font-size:
-      28px;
+    align-self: flex-end;
+    font-size: 28px;
   }
-
-  /* ===================================================== */
-  /* RESPONSIVE */
-  /* ===================================================== */
 
   @media(max-width:900px) {
     .proofs,
-    .sponsors {
-      grid-template-columns:
-        1fr 1fr;
-    }
-
+    .sponsors,
     .contact {
-      grid-template-columns:
-        1fr;
+      grid-template-columns: 1fr 1fr;
     }
   }
 
   @media(max-width:600px) {
     .proofs,
-    .sponsors {
-      grid-template-columns:
-        1fr;
-    }
-
+    .sponsors,
     .contact {
-      padding: 35px;
+      grid-template-columns: 1fr;
     }
 
-    .sponsor-card {
-      min-height: 170px;
-    }
-
-    .logo-wrapper {
-      min-height: 90px;
-    }
-
-    .logo-wrapper :global(img) {
-      max-height: 80px;
-    }
+    .contact { padding: 35px; }
   }
 </style>

@@ -4,6 +4,7 @@ import SafeImage from "../components/SafeImage.astro";
 import ProjectCard from "../components/ProjectCard.astro";
 import { equipos, proyectos } from "../data/site";
 import { historia } from "../data/history";
+import { withBase } from "../utils/base";
 ---
 
 <Layout
@@ -13,7 +14,7 @@ import { historia } from "../data/history";
   <section class="home">
     <div class="home-image">
       <SafeImage
-        src="/images/team-safi1.png"
+        src="/images/safi-hero.jpg"
         alt="SAFI"
         loading="eager"
         fetchpriority="high"
@@ -46,12 +47,45 @@ import { historia } from "../data/history";
         </p>
 
         <div class="actions">
-          <a class="button" href="/nosotros">CONOCE SAFI →</a>
-          <a class="button ghost" href="/unete">ÚNETE</a>
+          <a class="button" href={withBase("/nosotros")}>CONOCE SAFI →</a>
+          <a class="button ghost" href={withBase("/unete")}>ÚNETE</a>
         </div>
       </div>
 
-    
+      <aside>
+        <small>
+          PERFIL DE MISIÓN
+          <b>● AKBAL-II</b>
+        </small>
+
+        <h2>AKBAL-II</h2>
+
+        <dl>
+          <div>
+            <dt>MISIÓN</dt>
+            <dd>LASC 2026</dd>
+          </div>
+
+          <div>
+            <dt>OBJETIVO</dt>
+            <dd>3,000 m</dd>
+          </div>
+
+          <div>
+            <dt>MASA</dt>
+            <dd>32.7 kg</dd>
+          </div>
+
+          <div>
+            <dt>PROPULSIÓN</dt>
+            <dd>SRM / KNSU</dd>
+          </div>
+        </dl>
+
+        <a href={withBase("/proyectos/akbal-ii")}>
+          EXPLORAR MISIÓN →
+        </a>
+      </aside>
     </div>
   </section>
 
@@ -76,7 +110,7 @@ import { historia } from "../data/history";
     <div class="container teams">
       {
         equipos.map((equipo, index) => (
-          <a class="team reveal" href={`/equipos/${equipo.slug}`}>
+          <a class="team reveal" href={withBase(`/equipos/${equipo.slug}`)}>
             <span>0{index + 1}</span>
             <small>{equipo.subtitulo}</small>
             <h3>{equipo.nombre}</h3>
@@ -113,7 +147,7 @@ import { historia } from "../data/history";
     <div class="container mini-timeline reveal">
       {
         historia.map((item) => (
-          <a href={item.href}>
+          <a href={withBase(item.href)}>
             <span class="dot"></span>
             <strong>{item.year}</strong>
             <small>{item.proyecto}</small>
@@ -172,7 +206,7 @@ import { historia } from "../data/history";
           de SAFI.
         </p>
 
-        <a class="button" href="/competencias">
+        <a class="button" href={withBase("/competencias")}>
           EXPLORAR COMPETENCIAS →
         </a>
       </div>
@@ -194,7 +228,7 @@ import { historia } from "../data/history";
         </p>
       </div>
 
-      <a href="/unete">
+      <a href={withBase("/unete")}>
         <span>ÚNETE A SAFI</span>
         <b>↗</b>
       </a>

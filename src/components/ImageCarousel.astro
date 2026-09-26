@@ -1,4 +1,6 @@
 ---
+import { withBase } from "../utils/base";
+
 interface Props {
   images: {
     src: string;
@@ -9,277 +11,127 @@ interface Props {
   height?: string;
 }
 
-const {
-  images,
-  interval = 4500,
-  height = "520px"
-} = Astro.props;
+const { images, interval = 4500, height = "520px" } = Astro.props;
+const fallback = withBase("/images/coming-soon.jpg");
+const preparedImages = images.map((image) => ({
+  ...image,
+  src: image.src.startsWith("/") ? withBase(image.src) : image.src
+}));
 ---
 
-<div
-  class="carousel"
-  data-interval={interval}
-  style={`--carousel-height:${height}`}
->
+<div class="carousel" data-interval={interval} style={`--carousel-height:${height}`}>
   <div class="viewport">
     <div class="track">
       {
-        images.map((image, index) => (
-          <article
-            class:list={["slide", { active: index === 0 }]}
-            data-index={index}
-          >
-            <img
-              src={image.src}
-              alt={image.alt}
-              loading={index === 0 ? "eager" : "lazy"}
-              onerror="this.onerror=null;this.src='/images/coming-soon.jpg';"
-            />
-
+        preparedImages.map((image, index) => (
+          <article class:list={["slide", { active: index === 0 }]} data-index={index}>
+            <div class="background-image" style={`background-image:url('${image.src}')`}></div>
+            <div class="image-wrapper">
+              <img
+                src={image.src}
+                alt={image.alt}
+                loading={index === 0 ? "eager" : "lazy"}
+                data-fallback={fallback}
+                onerror="if(this.dataset.fallback && !this.dataset.fallbackUsed){this.dataset.fallbackUsed='1';this.src=this.dataset.fallback;this.closest('.slide')?.querySelector('.background-image')?.setAttribute('style',`background-image:url('${this.dataset.fallback}')`);}"
+              />
+            </div>
             <div class="overlay"></div>
-
-            {
-              image.caption && (
-                <div class="caption">
-                  <span>{String(index + 1).padStart(2, "0")}</span>
-                  <p>{image.caption}</p>
-                </div>
-              )
-            }
+            {image.caption && (
+              <div class="caption">
+                <span>{String(index + 1).padStart(2, "0")}</span>
+                <p>{image.caption}</p>
+              </div>
+            )}
           </article>
         ))
       }
     </div>
 
-    {
-      images.length > 1 && (
-        <>
-          <button class="arrow prev" aria-label="Imagen anterior">←</button>
-          <button class="arrow next" aria-label="Imagen siguiente">→</button>
-        </>
-      )
-    }
+    {preparedImages.length > 1 && (
+      <>
+        <button class="arrow prev" aria-label="Imagen anterior">←</button>
+        <button class="arrow next" aria-label="Imagen siguiente">→</button>
+      </>
+    )}
 
     <div class="counter">
-      <span class="current">01</span>
-      <span>/</span>
-      <span>{String(images.length).padStart(2, "0")}</span>
+      <span class="current">01</span><span>/</span>
+      <span>{String(preparedImages.length).padStart(2, "0")}</span>
     </div>
   </div>
 
-  {
-    images.length > 1 && (
-      <div class="dots">
-        {
-          images.map((_, index) => (
-            <button
-              class:list={["dot", { active: index === 0 }]}
-              data-index={index}
-              aria-label={`Ir a imagen ${index + 1}`}
-            ></button>
-          ))
-        }
-      </div>
-    )
-  }
+  {preparedImages.length > 1 && (
+    <div class="dots">
+      {preparedImages.map((_, index) => (
+        <button class:list={["dot", { active:index === 0 }]} data-index={index} aria-label={`Ir a imagen ${index + 1}`}></button>
+      ))}
+    </div>
+  )}
 </div>
 
 <script>
-  document.querySelectorAll(".carousel").forEach((carousel) => {
-    const slides = carousel.querySelectorAll(".slide");
-    const dots = carousel.querySelectorAll(".dot");
-    const prev = carousel.querySelector(".prev");
-    const next = carousel.querySelector(".next");
-    const current = carousel.querySelector(".current");
+  document.querySelectorAll<HTMLElement>(".carousel").forEach((carousel) => {
+    const slides = carousel.querySelectorAll<HTMLElement>(".slide");
+    const dots = carousel.querySelectorAll<HTMLElement>(".dot");
+    const prev = carousel.querySelector<HTMLElement>(".prev");
+    const next = carousel.querySelector<HTMLElement>(".next");
+    const current = carousel.querySelector<HTMLElement>(".current");
     const interval = Number(carousel.dataset.interval || 4500);
-
     let index = 0;
-    let timer;
+    let timer: number | undefined;
 
     if (slides.length <= 1) return;
 
-    const mostrar = (nuevoIndice) => {
+    const mostrar = (nuevoIndice: number) => {
       index = (nuevoIndice + slides.length) % slides.length;
-
-      slides.forEach((slide, i) => {
-        slide.classList.toggle("active", i === index);
-      });
-
-      dots.forEach((dot, i) => {
-        dot.classList.toggle("active", i === index);
-      });
-
-      if (current) {
-        current.textContent = String(index + 1).padStart(2, "0");
-      }
+      slides.forEach((slide, i) => slide.classList.toggle("active", i === index));
+      dots.forEach((dot, i) => dot.classList.toggle("active", i === index));
+      if (current) current.textContent = String(index + 1).padStart(2, "0");
     };
 
     const iniciar = () => {
-      clearInterval(timer);
-      timer = setInterval(() => mostrar(index + 1), interval);
+      if (timer) window.clearInterval(timer);
+      timer = window.setInterval(() => mostrar(index + 1), interval);
     };
 
-    prev?.addEventListener("click", () => {
-      mostrar(index - 1);
-      iniciar();
-    });
-
-    next?.addEventListener("click", () => {
-      mostrar(index + 1);
-      iniciar();
-    });
-
-    dots.forEach((dot) => {
-      dot.addEventListener("click", () => {
-        mostrar(Number(dot.dataset.index));
-        iniciar();
-      });
-    });
-
-    carousel.addEventListener("mouseenter", () => clearInterval(timer));
+    prev?.addEventListener("click", () => { mostrar(index - 1); iniciar(); });
+    next?.addEventListener("click", () => { mostrar(index + 1); iniciar(); });
+    dots.forEach((dot) => dot.addEventListener("click", () => { mostrar(Number(dot.dataset.index)); iniciar(); }));
+    carousel.addEventListener("mouseenter", () => timer && window.clearInterval(timer));
     carousel.addEventListener("mouseleave", iniciar);
 
     let inicioTactil = 0;
-
-    carousel.addEventListener("touchstart", (event) => {
-      inicioTactil = event.touches[0].clientX;
-    });
-
+    carousel.addEventListener("touchstart", (event) => { inicioTactil = event.touches[0].clientX; }, { passive:true });
     carousel.addEventListener("touchend", (event) => {
-      const finTactil = event.changedTouches[0].clientX;
-      const diferencia = inicioTactil - finTactil;
-
-      if (Math.abs(diferencia) > 50) {
-        mostrar(index + (diferencia > 0 ? 1 : -1));
-        iniciar();
-      }
-    });
+      const diferencia = inicioTactil - event.changedTouches[0].clientX;
+      if (Math.abs(diferencia) > 50) { mostrar(index + (diferencia > 0 ? 1 : -1)); iniciar(); }
+    }, { passive:true });
 
     iniciar();
   });
 </script>
 
 <style>
-  .carousel { width: 100%; }
-
-  .viewport {
-    position: relative;
-    height: var(--carousel-height);
-    overflow: hidden;
-    background: #080c12;
-    border: 1px solid var(--border);
-  }
-
-  .track {
-    position: relative;
-    width: 100%;
-    height: 100%;
-  }
-
-  .slide {
-    position: absolute;
-    inset: 0;
-    opacity: 0;
-    transform: scale(1.025);
-    transition: opacity .8s ease, transform 1.2s ease;
-    pointer-events: none;
-  }
-
-  .slide.active {
-    opacity: 1;
-    transform: scale(1);
-    pointer-events: auto;
-  }
-
-  .slide img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    filter: saturate(.82);
-  }
-
-  .overlay {
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(0deg,rgba(5,8,13,.85),transparent 45%);
-  }
-
-  .caption {
-    position: absolute;
-    left: 30px;
-    bottom: 28px;
-    z-index: 3;
-    display: flex;
-    align-items: center;
-    gap: 18px;
-  }
-
-  .caption span {
-    color: var(--accent);
-    font-size: 9px;
-    font-weight: 700;
-  }
-
-  .caption p {
-    margin: 0;
-    font: 500 17px var(--display);
-  }
-
-  .arrow {
-    position: absolute;
-    top: 50%;
-    z-index: 5;
-    width: 48px;
-    height: 48px;
-    border: 1px solid rgba(255,255,255,.25);
-    color: white;
-    background: rgba(5,8,13,.55);
-    transform: translateY(-50%);
-    cursor: pointer;
-  }
-
-  .arrow:hover {
-    color: #05080d;
-    background: var(--accent);
-  }
-
-  .prev { left: 20px; }
-  .next { right: 20px; }
-
-  .counter {
-    position: absolute;
-    right: 25px;
-    bottom: 25px;
-    z-index: 5;
-    display: flex;
-    gap: 5px;
-    color: #818a94;
-    font-size: 9px;
-  }
-
-  .counter .current { color: white; }
-
-  .dots {
-    margin-top: 14px;
-    display: flex;
-    gap: 7px;
-  }
-
-  .dot {
-    width: 32px;
-    height: 2px;
-    padding: 0;
-    border: 0;
-    background: #303842;
-    cursor: pointer;
-  }
-
-  .dot.active {
-    width: 55px;
-    background: var(--accent);
-  }
-
-  @media(max-width:700px) {
-    .viewport { height: 390px; }
-  }
+  .carousel { width:100%; }
+  .viewport { position:relative; height:var(--carousel-height); overflow:hidden; background:#080c12; border:1px solid var(--border); }
+  .track, .slide { position:relative; width:100%; height:100%; }
+  .slide { position:absolute; inset:0; opacity:0; transform:scale(1.025); transition:opacity .8s ease,transform 1.2s ease; pointer-events:none; overflow:hidden; }
+  .slide.active { opacity:1; transform:scale(1); pointer-events:auto; }
+  .background-image { position:absolute; inset:-30px; background-position:center; background-size:cover; filter:blur(24px) brightness(.36) saturate(.7); transform:scale(1.08); }
+  .image-wrapper { position:absolute; inset:0; z-index:1; display:flex; align-items:center; justify-content:center; }
+  .image-wrapper img { width:100%; height:100%; object-fit:contain; object-position:center; filter:saturate(.86); }
+  .overlay { position:absolute; inset:0; z-index:2; background:linear-gradient(0deg,rgba(5,8,13,.9),transparent 38%); pointer-events:none; }
+  .caption { position:absolute; left:30px; bottom:28px; z-index:3; display:flex; align-items:center; gap:18px; }
+  .caption span { color:var(--accent); font-size:9px; font-weight:700; }
+  .caption p { margin:0; font:500 17px var(--display); }
+  .arrow { position:absolute; top:50%; z-index:5; width:48px; height:48px; border:1px solid rgba(255,255,255,.25); color:white; background:rgba(5,8,13,.55); transform:translateY(-50%); cursor:pointer; }
+  .arrow:hover { color:#05080d; background:var(--accent); }
+  .prev { left:20px; } .next { right:20px; }
+  .counter { position:absolute; right:25px; bottom:25px; z-index:5; display:flex; gap:5px; color:#818a94; font-size:9px; }
+  .counter .current { color:white; }
+  .dots { display:flex; justify-content:center; gap:8px; margin-top:14px; }
+  .dot { width:24px; height:2px; padding:0; border:0; background:#333b44; cursor:pointer; }
+  .dot.active { background:var(--accent); }
+  @media(max-width:700px) { .viewport { height:min(var(--carousel-height),520px); } .caption { left:20px; bottom:22px; } .arrow { width:42px; height:42px; } }
+  @media(max-width:480px) { .viewport { height:460px; } .prev { left:10px; } .next { right:10px; } }
 </style>

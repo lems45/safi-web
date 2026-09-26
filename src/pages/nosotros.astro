@@ -3,6 +3,7 @@ import Layout from "../layouts/Layout.astro";
 import PageHero from "../components/PageHero.astro";
 import OfficialLogo from "../components/OfficialLogo.astro";
 import { historia } from "../data/history";
+import { withBase } from "../utils/base";
 ---
 
 <Layout
@@ -73,7 +74,7 @@ import { historia } from "../data/history";
         <div class="line"></div>
 
         <div class="children">
-          <a href="/equipos/potrorockets">
+          <a href={withBase("/equipos/potrorockets")}>
             <OfficialLogo
               type="potrorockets"
               size="large"
@@ -84,7 +85,7 @@ import { historia } from "../data/history";
             <small>COHETERÍA EXPERIMENTAL</small>
           </a>
 
-          <a href="/equipos/cansat">
+          <a href={withBase("/equipos/cansat")}>
             <OfficialLogo
               type="cansat"
               size="large"
@@ -125,7 +126,7 @@ import { historia } from "../data/history";
               <strong>{item.year}</strong>
             </div>
 
-            <a href={item.href} class="card">
+            <a href={withBase(item.href)} class="card">
               <div class="meta">
                 <span>{item.tipo}</span>
                 <span>{item.competencia}</span>
