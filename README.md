@@ -1,43 +1,93 @@
-# Astro Starter Kit: Minimal
+# Sitio web SAFI
 
-```sh
-npm create astro@latest -- --template minimal
+Proyecto Astro completamente en español.
+
+## Instalación
+
+```bash
+npm install
+npm run dev
 ```
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+Después abre la dirección local indicada por Astro, normalmente:
 
-## 🚀 Project Structure
+http://localhost:4321
 
-Inside of your Astro project, you'll see the following folders and files:
+## Compilación final
 
-```text
-/
-├── public/
-├── src/
-│   └── pages/
-│       └── index.astro
-└── package.json
+```bash
+npm run build
+npm run preview
 ```
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+## Datos que debes sustituir
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
+En:
 
-Any static assets, like images, can be placed in the `public/` directory.
+`src/data/site.ts`
 
-## 🧞 Commands
+cambia:
 
-All commands are run from the root of the project, from a terminal:
+- `TU_CORREO_SAFI@ejemplo.com`
+- enlace del formulario de ingreso, cuando tengas el definitivo.
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
+## Patrocinadores
 
-## 👀 Want to learn more?
+Edita:
 
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+`src/data/sponsors.ts`
+
+y agrega los patrocinadores oficiales actuales.
+
+Los logos deben ir en:
+
+`public/images/sponsors/`
+
+## Imágenes faltantes
+
+El componente `SafeImage.astro` sustituye automáticamente cualquier fotografía
+que no exista por:
+
+`public/images/coming-soon.jpg`
+
+Por ello puedes dejar todas las rutas listas e ir agregando las fotografías
+reales gradualmente.
+
+## Estructura principal
+
+- Inicio
+- Nosotros
+- Equipos
+  - PotroRockets
+  - CanSat
+- Proyectos
+  - AKBAL-II
+  - Cohete híbrido
+  - AGAS
+  - CanSat
+- Competencias
+  - CanSat CUCEI 2021
+  - ENMICE 2022
+  - CanSat Competition 2023
+  - LASC 2023
+  - ENMICE 2024
+  - ENMICE 2025
+  - LASC 2026
+- Patrocinadores
+- Únete
+
+## Logotipos oficiales
+
+Coloca exactamente estos archivos:
+
+- `public/images/logos/safi.png`
+- `public/images/logos/potrorockets.png`
+- `public/images/logos/cansat.png`
+
+No necesitas modificar ningún archivo de código.
+
+El sitio los utiliza automáticamente en Navbar, Footer, Nosotros, Equipos,
+páginas de equipo, proyectos y competencias según corresponda.
+
+Si alguno de los tres archivos no existe todavía, el componente de logo se
+oculta automáticamente para evitar iconos rotos.

@@ -1,17 +1,573 @@
 ---
-
+import Layout from "../layouts/Layout.astro";
+import SafeImage from "../components/SafeImage.astro";
+import ProjectCard from "../components/ProjectCard.astro";
+import { equipos, proyectos } from "../data/site";
+import { historia } from "../data/history";
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<Layout
+  title="SAFI | Sociedad Aeroespacial de la Facultad de Ingeniería"
+  description="SAFI es la Sociedad Aeroespacial de la Facultad de Ingeniería de la Universidad Autónoma del Estado de México."
+>
+  <section class="home">
+    <div class="home-image">
+      <SafeImage
+        src="/images/team-safi1.png"
+        alt="SAFI"
+        loading="eager"
+        fetchpriority="high"
+      />
+    </div>
+
+    <div class="shade"></div>
+    <div class="grid"></div>
+
+    <div class="container hero">
+      <div>
+        <span class="eyebrow">
+          ● UNIVERSIDAD AUTÓNOMA DEL ESTADO DE MÉXICO
+        </span>
+
+        <p class="institution">
+          SOCIEDAD AEROESPACIAL DE LA FACULTAD DE INGENIERÍA
+        </p>
+
+        <h1>
+          ATRAVESANDO<br />
+          <em>EL SECTOR</em><br />
+          AEROESPACIAL.
+        </h1>
+
+        <p class="hero-text">
+          SAFI articula equipos multidisciplinarios dedicados al diseño,
+          construcción, integración y validación de sistemas aeroespaciales
+          experimentales.
+        </p>
+
+        <div class="actions">
+          <a class="button" href="/nosotros">CONOCE SAFI →</a>
+          <a class="button ghost" href="/unete">ÚNETE</a>
+        </div>
+      </div>
+
+    
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container section-head reveal">
+      <div>
+        <div class="label">UNA ORGANIZACIÓN. MÚLTIPLES MISIONES.</div>
+
+        <h2 class="title">
+          SAFI ES LA<br />
+          <span>MATRIZ.</span>
+        </h2>
+      </div>
+
+      <p class="lead">
+        Actualmente SAFI integra a PotroRockets y al equipo CanSat. Ambos
+        desarrollan plataformas distintas, pero comparten conocimiento,
+        infraestructura y una misma cultura de ingeniería.
+      </p>
+    </div>
+
+    <div class="container teams">
+      {
+        equipos.map((equipo, index) => (
+          <a class="team reveal" href={`/equipos/${equipo.slug}`}>
+            <span>0{index + 1}</span>
+            <small>{equipo.subtitulo}</small>
+            <h3>{equipo.nombre}</h3>
+            <p>{equipo.descripcion}</p>
+
+            <div class="chips">
+              {equipo.areas.map((area) => <i>{area}</i>)}
+            </div>
+
+            <b>EXPLORAR EQUIPO ↗</b>
+          </a>
+        ))
+      }
+    </div>
+  </section>
+
+  <section class="section trayectoria">
+    <div class="container section-head reveal">
+      <div>
+        <div class="label">CAMINOS RECORRIDOS</div>
+
+        <h2 class="title">
+          2021 — 2026<br />
+          <span>UNA TRAYECTORIA.</span>
+        </h2>
+      </div>
+
+      <p class="lead">
+        Las misiones actuales son el resultado de proyectos, competencias y
+        aprendizajes acumulados a lo largo de varias generaciones.
+      </p>
+    </div>
+
+    <div class="container mini-timeline reveal">
+      {
+        historia.map((item) => (
+          <a href={item.href}>
+            <span class="dot"></span>
+            <strong>{item.year}</strong>
+            <small>{item.proyecto}</small>
+          </a>
+        ))
+      }
+    </div>
+  </section>
+
+  <section class="section proyectos">
+    <div class="container section-head reveal">
+      <div>
+        <div class="label">PROGRAMAS Y PROYECTOS</div>
+
+        <h2 class="title">
+          DEL CONCEPTO<br />
+          <span>A LA MISIÓN.</span>
+        </h2>
+      </div>
+
+      <p class="lead">
+        Sistemas experimentales desarrollados por los equipos que forman parte
+        de SAFI.
+      </p>
+    </div>
+
+    <div class="container grid-2">
+      {
+        proyectos.map((proyecto) => (
+          <ProjectCard proyecto={proyecto} />
+        ))
+      }
+    </div>
+  </section>
+
+  <section class="section competencias-home">
+    <div class="container comp-grid reveal">
+      <div class="comp-image">
+        <SafeImage
+          src="/images/lasc-hero.jpg"
+          alt="Competencias SAFI"
+        />
+      </div>
+
+      <div class="comp-copy">
+        <div class="label">COMPETENCIAS</div>
+
+        <h2>
+          LA INGENIERÍA<br />
+          <span>SE PONE A PRUEBA.</span>
+        </h2>
+
+        <p>
+          Desde CanSat CUCEI hasta ENMICE y Latin American Space Challenge,
+          las competencias forman parte del proceso de validación y crecimiento
+          de SAFI.
+        </p>
+
+        <a class="button" href="/competencias">
+          EXPLORAR COMPETENCIAS →
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section join">
+    <div class="container cta reveal">
+      <div>
+        <div class="label">PRÓXIMA GENERACIÓN</div>
+
+        <h2>
+          ¿QUIERES CONSTRUIR<br />
+          <span>ALGO QUE VUELE?</span>
+        </h2>
+
+        <p>
+          Explora dónde puede participar tu perfil dentro de SAFI.
+        </p>
+      </div>
+
+      <a href="/unete">
+        <span>ÚNETE A SAFI</span>
+        <b>↗</b>
+      </a>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .home {
+    min-height: 100vh;
+    position: relative;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+  }
+
+  .home-image {
+    position: absolute;
+    inset: 0;
+  }
+
+  .home-image :global(img) {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: saturate(.8) brightness(.88);
+  }
+
+  .shade {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background:
+      linear-gradient(90deg,rgba(5,8,13,.98),rgba(5,8,13,.72) 55%,rgba(5,8,13,.34)),
+      linear-gradient(0deg,#05080d,transparent 48%);
+  }
+
+  .grid {
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    opacity: .09;
+    background-image:
+      linear-gradient(rgba(255,255,255,.2) 1px,transparent 1px),
+      linear-gradient(90deg,rgba(255,255,255,.2) 1px,transparent 1px);
+    background-size: 70px 70px;
+  }
+
+  .hero {
+    position: relative;
+    z-index: 3;
+    display: grid;
+    grid-template-columns: 1.25fr .55fr;
+    gap: 80px;
+    align-items: center;
+    padding-top: 90px;
+  }
+
+  .eyebrow {
+    color: var(--accent);
+    font-size: 8px;
+    letter-spacing: .17em;
+  }
+
+  .institution {
+    margin: 22px 0 0;
+    color: #d4d9df;
+    font: 500 11px var(--display);
+    letter-spacing: .12em;
+  }
+
+  .hero h1 {
+    margin: 20px 0 25px;
+    font: 700 clamp(58px,7vw,105px)/.86 var(--display);
+    letter-spacing: -.06em;
+  }
+
+  .hero h1 em {
+    color: transparent;
+    font-style: normal;
+    -webkit-text-stroke: 1px rgba(255,255,255,.52);
+  }
+
+  .hero-text {
+    max-width: 630px;
+    color: #adb4bd;
+    line-height: 1.8;
+  }
+
+  .actions {
+    display: flex;
+    gap: 12px;
+    margin-top: 28px;
+  }
+
+  .hero aside {
+    padding: 26px;
+    background: rgba(8,12,18,.78);
+    backdrop-filter: blur(15px);
+    border: 1px solid rgba(255,255,255,.15);
+  }
+
+  .hero aside small {
+    display: flex;
+    justify-content: space-between;
+    color: #68717c;
+    font-size: 7px;
+    letter-spacing: .12em;
+  }
+
+  .hero aside small b { color: var(--accent); }
+
+  .hero aside h2 {
+    margin: 24px 0 0;
+    padding-bottom: 22px;
+    border-bottom: 1px solid var(--border);
+    font: 600 36px var(--display);
+  }
+
+  .hero aside dl {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    margin: 0;
+  }
+
+  .hero aside dl div {
+    padding: 18px 0;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .hero aside dl div:nth-child(even) {
+    padding-left: 16px;
+    border-left: 1px solid var(--border);
+  }
+
+  dt {
+    color: #626b76;
+    font-size: 7px;
+  }
+
+  dd {
+    margin: 7px 0 0;
+    font: 500 13px var(--display);
+  }
+
+  .hero aside > a {
+    display: block;
+    margin-top: 20px;
+    color: #cbd1d7;
+    text-decoration: none;
+    font-size: 8px;
+  }
+
+  .section-head {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 90px;
+    align-items: end;
+    margin-bottom: 60px;
+  }
+
+  .teams {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .team {
+    min-height: 390px;
+    padding: 35px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    border: 1px solid var(--border);
+    background: #080c12;
+    color: inherit;
+    text-decoration: none;
+  }
+
+  .team + .team { border-left: 0; }
+
+  .team > span {
+    position: absolute;
+    right: 28px;
+    color: #4e5761;
+    font-size: 9px;
+  }
+
+  .team small {
+    color: var(--accent);
+    font-size: 8px;
+  }
+
+  .team h3 {
+    margin: 40px 0 12px;
+    font: 600 42px var(--display);
+  }
+
+  .team p {
+    color: var(--muted);
+    font-size: 12px;
+    line-height: 1.8;
+  }
+
+  .chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 7px;
+    margin-top: 12px;
+  }
+
+  .chips i {
+    padding: 7px 9px;
+    border: 1px solid #313a44;
+    color: #aab2bb;
+    font-size: 7px;
+    font-style: normal;
+  }
+
+  .team b {
+    margin-top: auto;
+    padding-top: 25px;
+    font-size: 8px;
+  }
+
+  .trayectoria,
+  .proyectos,
+  .join {
+    background: #070a0f;
+  }
+
+  .mini-timeline {
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(7,1fr);
+    padding-top: 30px;
+  }
+
+  .mini-timeline::before {
+    content: "";
+    position: absolute;
+    left: 7%;
+    right: 7%;
+    top: 37px;
+    height: 1px;
+    background: #3a444e;
+  }
+
+  .mini-timeline a {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: white;
+    text-decoration: none;
+  }
+
+  .dot {
+    width: 14px;
+    height: 14px;
+    margin-bottom: 18px;
+    background: var(--accent);
+    border: 3px solid #070a0f;
+    outline: 1px solid var(--accent);
+    transform: rotate(45deg);
+  }
+
+  .mini-timeline strong {
+    font: 500 15px var(--display);
+  }
+
+  .mini-timeline small {
+    margin-top: 6px;
+    color: #767f89;
+    font-size: 8px;
+  }
+
+  .comp-grid {
+    display: grid;
+    grid-template-columns: 1.15fr .85fr;
+    min-height: 520px;
+    border: 1px solid var(--border);
+    background: #080c12;
+  }
+
+  .comp-image {
+    overflow: hidden;
+  }
+
+  .comp-image :global(img) {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .comp-copy {
+    padding: 55px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .comp-copy h2 {
+    margin: 15px 0 20px;
+    font: 600 clamp(45px,5vw,72px)/.92 var(--display);
+  }
+
+  .comp-copy h2 span { color: var(--accent); }
+
+  .comp-copy p {
+    color: var(--muted);
+    line-height: 1.8;
+  }
+
+  .cta {
+    padding: 65px;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 60px;
+    align-items: center;
+    border: 1px solid var(--border);
+  }
+
+  .cta h2 {
+    margin: 15px 0 20px;
+    font: 600 clamp(42px,5vw,72px)/.95 var(--display);
+  }
+
+  .cta h2 span { color: var(--accent); }
+
+  .cta p { color: var(--muted); }
+
+  .cta > a {
+    width: 180px;
+    height: 180px;
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background: var(--accent);
+    color: #05080d;
+    text-decoration: none;
+    font-size: 10px;
+    font-weight: 800;
+  }
+
+  .cta > a b {
+    align-self: flex-end;
+    font-size: 25px;
+  }
+
+  @media(max-width:1000px) {
+    .hero,
+    .section-head,
+    .teams,
+    .comp-grid,
+    .cta {
+      grid-template-columns: 1fr;
+    }
+
+    .mini-timeline {
+      grid-template-columns: repeat(4,1fr);
+      gap: 40px 10px;
+    }
+
+    .mini-timeline::before { display: none; }
+
+    .comp-image { min-height: 400px; }
+  }
+
+  @media(max-width:650px) {
+    .mini-timeline { grid-template-columns: repeat(2,1fr); }
+    .actions { flex-direction: column; align-items: flex-start; }
+    .comp-copy, .cta { padding: 35px; }
+  }
+</style>

@@ -1,0 +1,461 @@
+<section class="hero">
+  <div class="hero-background"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-grid"></div>
+
+  <div class="hero-content">
+    <div class="hero-copy">
+      <div class="eyebrow">
+        <span class="status-dot"></span>
+        UNIVERSIDAD AUTÓNOMA DEL ESTADO DE MÉXICO
+      </div>
+
+      <h1>
+        CONSTRUIMOS
+        <span>EL FUTURO</span>
+        DESDE TIERRA.
+      </h1>
+
+      <p>
+        Somos SAFI, un equipo multidisciplinario de estudiantes que diseña,
+        construye y vuela sistemas aeroespaciales experimentales desde México.
+      </p>
+
+      <div class="hero-buttons">
+        <a href="/proyectos" class="primary-button">
+          CONOCE NUESTROS PROYECTOS
+          <span>→</span>
+        </a>
+
+        <a href="/unete" class="secondary-button">
+          ÚNETE AL EQUIPO
+        </a>
+      </div>
+    </div>
+
+    <div class="mission-panel">
+      <div class="panel-top">
+        <span>MISSION PROFILE</span>
+        <span class="live">
+          <i></i>
+          AKBAL-II
+        </span>
+      </div>
+
+      <div class="rocket-name">
+        <small>EXPERIMENTAL ROCKET</small>
+        <strong>AKBAL-II</strong>
+      </div>
+
+      <div class="mission-data">
+        <div>
+          <span>MISIÓN</span>
+          <strong>LASC 2026</strong>
+        </div>
+
+        <div>
+          <span>ALTITUD OBJETIVO</span>
+          <strong>3,000 <small>m</small></strong>
+        </div>
+
+        <div>
+          <span>PROPULSIÓN</span>
+          <strong>M3284 KNSU</strong>
+        </div>
+
+        <div>
+          <span>IMPULSO TOTAL</span>
+          <strong>9,180 <small>N·s</small></strong>
+        </div>
+      </div>
+
+      <div class="mission-footer">
+        <span>01</span>
+        <div></div>
+        <span>SAFI / 2026</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="scroll-indicator">
+    <span>DESCUBRE</span>
+    <div></div>
+  </div>
+</section>
+
+<style>
+  .hero {
+    position: relative;
+
+    min-height: 100vh;
+
+    display: flex;
+    align-items: center;
+
+    overflow: hidden;
+  }
+
+  .hero-background {
+    position: absolute;
+    inset: 0;
+
+    background:
+      url("/images/hero-akbal.jpg")
+      center 35% / cover no-repeat;
+
+    filter: saturate(0.75);
+  }
+
+  .hero-overlay {
+    position: absolute;
+    inset: 0;
+
+    background:
+      linear-gradient(
+        90deg,
+        rgba(5, 8, 13, 0.98) 0%,
+        rgba(5, 8, 13, 0.88) 37%,
+        rgba(5, 8, 13, 0.35) 72%,
+        rgba(5, 8, 13, 0.45) 100%
+      ),
+      linear-gradient(
+        0deg,
+        #05080d 0%,
+        transparent 35%
+      );
+  }
+
+  .hero-grid {
+    position: absolute;
+    inset: 0;
+
+    opacity: 0.12;
+
+    background-image:
+      linear-gradient(rgba(255,255,255,.2) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,.2) 1px, transparent 1px);
+
+    background-size: 70px 70px;
+
+    mask-image: linear-gradient(
+      to right,
+      black,
+      transparent 75%
+    );
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 2;
+
+    width: min(1400px, calc(100% - 80px));
+
+    margin: 80px auto 0;
+
+    display: grid;
+    grid-template-columns: 1.15fr 0.65fr;
+    gap: 80px;
+    align-items: center;
+  }
+
+  .eyebrow {
+    margin-bottom: 30px;
+
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    color: #b4bac2;
+
+    font-size: 11px;
+    font-weight: 600;
+
+    letter-spacing: 0.18em;
+  }
+
+  .status-dot {
+    width: 7px;
+    height: 7px;
+
+    background: var(--accent);
+
+    border-radius: 50%;
+
+    box-shadow: 0 0 14px var(--accent);
+  }
+
+  h1 {
+    max-width: 850px;
+
+    margin: 0;
+
+    color: white;
+
+    font-family: "Space Grotesk", sans-serif;
+
+    font-size: clamp(58px, 6.5vw, 105px);
+    font-weight: 700;
+
+    line-height: 0.88;
+
+    letter-spacing: -0.055em;
+  }
+
+  h1 span {
+    display: block;
+
+    color: transparent;
+
+    -webkit-text-stroke: 1px rgba(255,255,255,.45);
+  }
+
+  .hero-copy p {
+    max-width: 600px;
+
+    margin: 34px 0;
+
+    color: #aeb4bd;
+
+    font-size: 17px;
+    line-height: 1.8;
+  }
+
+  .hero-buttons {
+    display: flex;
+    gap: 14px;
+  }
+
+  .primary-button,
+  .secondary-button {
+    padding: 16px 22px;
+
+    font-size: 11px;
+    font-weight: 800;
+
+    letter-spacing: 0.08em;
+
+    text-decoration: none;
+
+    transition: 0.25s;
+  }
+
+  .primary-button {
+    color: #05080d;
+    background: white;
+  }
+
+  .primary-button span {
+    margin-left: 18px;
+  }
+
+  .primary-button:hover {
+    background: var(--accent);
+  }
+
+  .secondary-button {
+    color: white;
+
+    border: 1px solid rgba(255,255,255,.25);
+  }
+
+  .secondary-button:hover {
+    border-color: white;
+  }
+
+  .mission-panel {
+    justify-self: end;
+
+    width: min(100%, 390px);
+
+    padding: 27px;
+
+    background: rgba(8, 12, 18, 0.72);
+
+    backdrop-filter: blur(18px);
+
+    border: 1px solid rgba(255,255,255,.14);
+  }
+
+  .panel-top {
+    display: flex;
+    justify-content: space-between;
+
+    color: #747d88;
+
+    font-size: 9px;
+    font-weight: 700;
+
+    letter-spacing: 0.16em;
+  }
+
+  .live {
+    color: #d9dde2;
+  }
+
+  .live i {
+    display: inline-block;
+
+    width: 6px;
+    height: 6px;
+
+    margin-right: 7px;
+
+    background: var(--accent);
+
+    border-radius: 50%;
+  }
+
+  .rocket-name {
+    padding: 35px 0;
+
+    border-bottom: 1px solid var(--border);
+  }
+
+  .rocket-name small {
+    display: block;
+
+    margin-bottom: 5px;
+
+    color: #737b85;
+
+    font-size: 9px;
+
+    letter-spacing: .18em;
+  }
+
+  .rocket-name strong {
+    color: white;
+
+    font-family: "Space Grotesk", sans-serif;
+
+    font-size: 38px;
+  }
+
+  .mission-data {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .mission-data div {
+    padding: 22px 0;
+
+    border-bottom: 1px solid var(--border);
+  }
+
+  .mission-data div:nth-child(odd) {
+    border-right: 1px solid var(--border);
+  }
+
+  .mission-data div:nth-child(even) {
+    padding-left: 20px;
+  }
+
+  .mission-data span {
+    display: block;
+
+    margin-bottom: 8px;
+
+    color: #656e78;
+
+    font-size: 8px;
+
+    letter-spacing: .15em;
+  }
+
+  .mission-data strong {
+    color: #f2f3f5;
+
+    font-family: "Space Grotesk", sans-serif;
+
+    font-size: 15px;
+  }
+
+  .mission-data small {
+    color: #7e8791;
+
+    font-size: 9px;
+  }
+
+  .mission-footer {
+    padding-top: 22px;
+
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    color: #555e68;
+
+    font-size: 8px;
+
+    letter-spacing: .12em;
+  }
+
+  .mission-footer div {
+    height: 1px;
+
+    flex: 1;
+
+    background: #303740;
+  }
+
+  .scroll-indicator {
+    position: absolute;
+
+    left: 50%;
+    bottom: 25px;
+
+    z-index: 2;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+
+    color: #68717c;
+
+    font-size: 8px;
+
+    letter-spacing: .2em;
+  }
+
+  .scroll-indicator div {
+    width: 1px;
+    height: 30px;
+
+    background: linear-gradient(
+      var(--accent),
+      transparent
+    );
+  }
+
+  @media (max-width: 1000px) {
+    .hero-content {
+      width: min(100% - 40px, 700px);
+
+      grid-template-columns: 1fr;
+
+      padding: 120px 0 80px;
+
+      gap: 50px;
+    }
+
+    .mission-panel {
+      justify-self: start;
+    }
+
+    .scroll-indicator {
+      display: none;
+    }
+  }
+
+  @media (max-width: 600px) {
+    .hero-buttons {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .mission-panel {
+      width: 100%;
+    }
+  }
+</style>

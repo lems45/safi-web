@@ -1,0 +1,210 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import SafeImage from "../../components/SafeImage.astro";
+import ImageCarousel from "../../components/ImageCarousel.astro";
+import OfficialLogo from "../../components/OfficialLogo.astro";
+---
+
+<Layout
+  title="LASC 2026 | SAFI"
+  description="Participación de PotroRockets y AKBAL-II en Latin American Space Challenge 2026."
+>
+  <section class="hero">
+    <div class="image">
+      <SafeImage
+        src="/images/lasc-hero.jpg"
+        alt="Latin American Space Challenge 2026"
+        loading="eager"
+        fetchpriority="high"
+      />
+    </div>
+
+    <div class="shade"></div>
+
+    <div class="container content">
+      <div class="competition-logos">
+        <OfficialLogo
+          type="potrorockets"
+          size="medium"
+          alt="PotroRockets"
+        />
+
+        <OfficialLogo
+          type="safi"
+          size="small"
+          alt="SAFI"
+        />
+      </div>
+
+      <small>SAFI / COMPETENCIAS / 2026</small>
+
+      <h1>
+        LASC<br />
+        <span>2026</span>
+      </h1>
+
+      <p>Latin American Space Challenge</p>
+
+      <div class="panel">
+        <div><small>EQUIPO</small><strong>PotroRockets</strong></div>
+        <div><small>MISIÓN</small><strong>3,000 m</strong></div>
+        <div><small>UBICACIÓN</small><strong>Brasil</strong></div>
+        <div><small>VEHÍCULO</small><strong>AKBAL-II</strong></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container grid-2">
+      <div>
+        <div class="label">RESUMEN DE MISIÓN</div>
+
+        <h2 class="title">
+          PRIMERA MISIÓN<br />
+          <span>INTERNACIONAL DE AKBAL-II.</span>
+        </h2>
+      </div>
+
+      <div>
+        <p class="lead">
+          PotroRockets desarrolló AKBAL-II para participar en Latin American
+          Space Challenge 2026.
+        </p>
+
+        <p class="copy">
+          La misión implicó integrar propulsión, aeroestructuras, aviónica,
+          telemetría, recuperación, carga útil y logística bajo un mismo
+          vehículo.
+        </p>
+
+        <a class="button" href="/proyectos/akbal-ii">
+          EXPLORAR AKBAL-II →
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section galeria">
+    <div class="container">
+      <div class="label">GALERÍA DE MISIÓN</div>
+
+      <h2 class="title">
+        LASC<br />
+        <span>2026.</span>
+      </h2>
+
+      <ImageCarousel
+        height="610px"
+        interval={4000}
+        images={[
+          { src: "/images/lasc-01.jpg", alt: "SAFI en LASC 2026", caption: "SAFI / Brasil 2026" },
+          { src: "/images/lasc-02.jpg", alt: "Integración de AKBAL-II", caption: "Integración del vehículo" },
+          { src: "/images/lasc-03.jpg", alt: "Operaciones de campo", caption: "Operaciones de campo" },
+          { src: "/images/lasc-04.jpg", alt: "PotroRockets", caption: "PotroRockets" },
+          { src: "/images/lasc-05.jpg", alt: "AKBAL-II", caption: "AKBAL-II" },
+          { src: "/images/lasc-06.jpg", alt: "Preparación de misión", caption: "Preparación de misión" },
+          { src: "/images/lasc-07.jpg", alt: "Equipo SAFI", caption: "Equipo SAFI" },
+          { src: "/images/lasc-08.jpg", alt: "Operaciones de lanzamiento", caption: "Operaciones de lanzamiento" }
+        ]}
+      />
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .competition-logos {
+    margin-bottom: 25px;
+    display: flex;
+    align-items: center;
+    gap: 22px;
+  }
+
+
+  .hero {
+    min-height: 92vh;
+    position: relative;
+    display: flex;
+    align-items: flex-end;
+    padding: 160px 0 70px;
+    overflow: hidden;
+  }
+
+  .image {
+    position: absolute;
+    inset: 0;
+  }
+
+  .image :global(img) {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .shade {
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(0deg,#05080d,rgba(5,8,13,.45) 60%),
+      linear-gradient(90deg,rgba(5,8,13,.8),transparent 70%);
+  }
+
+  .content {
+    position: relative;
+    z-index: 2;
+  }
+
+  .content > small {
+    color: var(--accent);
+    font-size: 8px;
+  }
+
+  .hero h1 {
+    margin: 15px 0 20px;
+    font: 600 clamp(90px,14vw,190px)/.72 var(--display);
+    letter-spacing: -.07em;
+  }
+
+  .hero h1 span {
+    color: transparent;
+    -webkit-text-stroke: 1px rgba(255,255,255,.55);
+  }
+
+  .hero p { color: #b1b8c0; }
+
+  .panel {
+    margin-top: 30px;
+    max-width: 700px;
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    border: 1px solid var(--border);
+    background: rgba(8,12,18,.72);
+  }
+
+  .panel div {
+    padding: 18px;
+    border-right: 1px solid var(--border);
+  }
+
+  .panel small {
+    display: block;
+    color: #5c6670;
+    font-size: 6px;
+  }
+
+  .panel strong {
+    display: block;
+    margin-top: 6px;
+    font: 500 12px var(--display);
+  }
+
+  .copy {
+    color: var(--muted);
+    line-height: 1.9;
+  }
+
+  .galeria { background: #070a0f; }
+
+  @media(max-width:700px) {
+    .panel { grid-template-columns: 1fr 1fr; }
+  }
+</style>

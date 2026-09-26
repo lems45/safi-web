@@ -1,0 +1,140 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import PageHero from "../../components/PageHero.astro";
+import ProjectCard from "../../components/ProjectCard.astro";
+import OfficialLogo from "../../components/OfficialLogo.astro";
+import { proyectos } from "../../data/site";
+
+const proyectosCansat = proyectos.filter(
+  (proyecto) => proyecto.equipo === "CanSat"
+);
+---
+
+<Layout
+  title="CanSat | SAFI"
+  description="Equipo CanSat de SAFI."
+>
+  <PageHero
+    eyebrow="SAFI / SISTEMAS AEROESPACIALES COMPACTOS"
+    title="CANSAT"
+    outline="EQUIPO"
+    description="Plataformas compactas para desarrollar electrónica, comunicaciones, software y misiones aeroespaciales."
+    image="/images/team-cansat.jpg"
+  />
+
+  <section class="section">
+    <div class="container grid-2">
+      <div>
+        <div class="team-identity">
+          <OfficialLogo
+            type="cansat"
+            size="large"
+            alt="CanSat"
+          />
+          <OfficialLogo
+            type="safi"
+            size="small"
+            alt="SAFI"
+          />
+        </div>
+
+        <div class="label">CANSAT</div>
+
+        <h2 class="title">
+          PEQUEÑA PLATAFORMA.<br />
+          <span>MISIÓN COMPLETA.</span>
+        </h2>
+      </div>
+
+      <p class="lead">
+        El equipo CanSat desarrolla ciclos completos de misión utilizando
+        plataformas compactas que integran sensores, electrónica, software,
+        comunicaciones, energía y estación terrestre.
+      </p>
+    </div>
+  </section>
+
+  <section class="section capacidades">
+    <div class="container">
+      <div class="label">CAPACIDADES</div>
+
+      <h2 class="title">
+        SISTEMAS<br />
+        <span>INTEGRADOS.</span>
+      </h2>
+
+      <div class="cards">
+        {
+          ["Electrónica","Sensores","Comunicaciones","Software","Energía","Estación terrestre"].map((item, index) => (
+            <article>
+              <span>0{index + 1}</span>
+              <h3>{item}</h3>
+            </article>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="label">PROYECTOS</div>
+
+      <h2 class="title">
+        PROGRAMA<br />
+        <span>CANSAT.</span>
+      </h2>
+
+      <div class="grid-2">
+        {
+          proyectosCansat.map((proyecto) => (
+            <ProjectCard proyecto={proyecto} />
+          ))
+        }
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .team-identity {
+    margin-bottom: 30px;
+    display: flex;
+    align-items: center;
+    gap: 24px;
+  }
+
+
+  .capacidades { background: #070a0f; }
+
+  .cards {
+    margin-top: 50px;
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+  }
+
+  .cards article {
+    min-height: 190px;
+    padding: 25px;
+    border: 1px solid var(--border);
+    background: #080c12;
+  }
+
+  .cards span {
+    color: #505964;
+    font-size: 8px;
+  }
+
+  .cards h3 {
+    margin-top: 70px;
+    font: 500 19px var(--display);
+  }
+
+  @media(max-width:700px) {
+    .cards { grid-template-columns: 1fr 1fr; }
+  }
+
+  @media(max-width:500px) {
+    .cards { grid-template-columns: 1fr; }
+  }
+</style>
