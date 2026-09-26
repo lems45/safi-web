@@ -1,0 +1,195 @@
+---
+import Layout from "../layouts/Layout.astro";
+import PageHero from "../components/PageHero.astro";
+import ImageCarousel from "../components/ImageCarousel.astro";
+import { reclutamiento, configuracion } from "../data/site";
+
+const carreras = Object.keys(reclutamiento);
+---
+
+<Layout
+  title="Únete | SAFI"
+  description="Conoce las áreas en las que puedes participar dentro de SAFI."
+>
+  <PageHero
+    eyebrow="RECLUTAMIENTO"
+    title="TU PRÓXIMO PROYECTO"
+    outline="PODRÍA VOLAR."
+    description="SAFI reúne estudiantes de distintas disciplinas alrededor de proyectos que requieren diseñar, fabricar, programar, probar y operar sistemas reales."
+    image="/images/join-hero.jpg"
+  />
+
+  <section class="section dark">
+    <div class="container">
+      <div class="label">VIDA EN SAFI</div>
+
+      <h2 class="title">
+        AQUÍ SE<br />
+        <span>CONSTRUYE.</span>
+      </h2>
+
+      <ImageCarousel
+        height="590px"
+        interval={3800}
+        images={[
+          { src: "/images/join-01.jpg", alt: "Integración SAFI", caption: "Integración" },
+          { src: "/images/join-02.jpg", alt: "Aviónica SAFI", caption: "Aviónica" },
+          { src: "/images/join-03.jpg", alt: "Software SAFI", caption: "Software" },
+          { src: "/images/join-04.jpg", alt: "Manufactura SAFI", caption: "Manufactura" },
+          { src: "/images/join-05.jpg", alt: "Pruebas SAFI", caption: "Pruebas" },
+          { src: "/images/join-06.jpg", alt: "CanSat SAFI", caption: "CanSat" },
+          { src: "/images/join-07.jpg", alt: "Operaciones SAFI", caption: "Operaciones de campo" }
+        ]}
+      />
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="label">ENCUENTRA TU LUGAR</div>
+
+      <h2 class="title">
+        ¿QUÉ<br />
+        <span>ESTUDIAS?</span>
+      </h2>
+
+      <div class="selector">
+        {
+          carreras.map((carrera, index) => (
+            <button
+              data-career={carrera}
+              class={index === 0 ? "active" : ""}
+            >
+              {carrera}
+            </button>
+          ))
+        }
+      </div>
+
+      <div class="result">
+        <small>TU PERFIL PUEDE PARTICIPAR EN</small>
+        <h3 id="career-title">{carreras[0]}</h3>
+        <div id="areas"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section dark">
+    <div class="container apply">
+      <div>
+        <div class="label">INGRESO</div>
+
+        <h2 class="title">
+          ¿LISTO PARA<br />
+          <span>PARTICIPAR?</span>
+        </h2>
+
+        <p class="lead">
+          Completa el formulario de ingreso para conocer tu perfil e intereses.
+        </p>
+      </div>
+
+      <a
+        class="button"
+        href={configuracion.formularioIngreso}
+        target="_blank"
+        rel="noopener"
+      >
+        FORMULARIO DE INGRESO ↗
+      </a>
+    </div>
+  </section>
+
+  <script define:vars={{ reclutamiento }}>
+    const botones = document.querySelectorAll("[data-career]");
+    const areas = document.querySelector("#areas");
+    const titulo = document.querySelector("#career-title");
+
+    const nombres = Object.keys(reclutamiento);
+
+    function render(carrera) {
+      if (!areas || !titulo) return;
+
+      titulo.textContent = carrera;
+
+      areas.innerHTML = reclutamiento[carrera]
+        .map((area) => `<span>${area}</span>`)
+        .join("");
+    }
+
+    if (nombres.length) render(nombres[0]);
+
+    botones.forEach((boton) => {
+      boton.addEventListener("click", () => {
+        botones.forEach((x) => x.classList.remove("active"));
+        boton.classList.add("active");
+        render(boton.dataset.career);
+      });
+    });
+  </script>
+</Layout>
+
+<style>
+  .dark { background: #070a0f; }
+
+  .selector {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: 45px 0 20px;
+  }
+
+  .selector button {
+    padding: 13px 18px;
+    border: 1px solid #343d47;
+    background: #080c12;
+    color: #a9b1ba;
+    cursor: pointer;
+  }
+
+  .selector button.active,
+  .selector button:hover {
+    background: var(--accent);
+    color: #05080d;
+  }
+
+  .result {
+    padding: 42px;
+    border: 1px solid var(--border);
+    background: #080c12;
+  }
+
+  .result > small {
+    color: var(--accent);
+    font-size: 8px;
+  }
+
+  .result h3 {
+    margin: 10px 0 25px;
+    font: 600 38px var(--display);
+  }
+
+  #areas {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  #areas :global(span) {
+    padding: 10px 13px;
+    border: 1px solid #313a44;
+    color: #d3d7dc;
+    font-size: 10px;
+  }
+
+  .apply {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: center;
+    gap: 50px;
+  }
+
+  @media(max-width:700px) {
+    .apply { grid-template-columns: 1fr; }
+  }
+</style>

@@ -1,0 +1,13 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import PageHero from "../../components/PageHero.astro";
+import ProjectCard from "../../components/ProjectCard.astro";
+import {teams,projects} from "../../data/site";
+export function getStaticPaths(){return teams.map(team=>({params:{slug:team.slug},props:{team}}));}
+const {team}=Astro.props;
+const related=projects.filter(p=>p.team.toLowerCase().includes(team.name.toLowerCase().replace("potrorockets","potrorockets")) || (team.slug==="cansat" && p.team==="CanSat"));
+---
+<Layout title={`${team.name} | SAFI`}><PageHero eyebrow={`SAFI / ${team.kicker}`} title={team.name.toUpperCase()} outline="TEAM" description={team.description} image={team.image}/>
+<section class="section"><div class="container grid-2"><div><div class="label">CAPACIDADES</div><h2 class="title">INGENIERÍA<br/><span>MULTIDISCIPLINARIA.</span></h2></div><div class="areas">{team.areas.map((a,i)=><div><small>0{i+1}</small><b>{a}</b></div>)}</div></div></section>
+<section class="section dark"><div class="container"><div class="label">PROYECTOS</div><h2 class="title">PROGRAMAS <span>DEL EQUIPO.</span></h2><div class="grid-2 cards">{related.map(p=><ProjectCard project={p}/>)}</div></div></section></Layout>
+<style>.areas{display:grid;grid-template-columns:1fr 1fr}.areas div{min-height:110px;border:1px solid var(--border);padding:18px;display:flex;flex-direction:column;justify-content:space-between}.areas small{color:#59626d}.areas b{font:500 14px var(--display)}.dark{background:#070a0f}.cards{margin-top:45px}@media(max-width:600px){.areas{grid-template-columns:1fr}}</style>

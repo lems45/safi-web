@@ -1,0 +1,398 @@
+---
+import Layout from "../layouts/Layout.astro";
+import PageHero from "../components/PageHero.astro";
+import OfficialLogo from "../components/OfficialLogo.astro";
+import { historia } from "../data/history";
+---
+
+<Layout
+  title="Nosotros | SAFI"
+  description="Conoce a SAFI, su organización y trayectoria."
+>
+  <PageHero
+    eyebrow="QUIÉNES SOMOS"
+    title="LA HISTORIA"
+    outline="DETRÁS DEL IMPULSO."
+    description="SAFI es la Sociedad Aeroespacial de la Facultad de Ingeniería de la Universidad Autónoma del Estado de México."
+    image="/images/team-safi.jpg"
+  />
+
+  <section class="section">
+    <div class="container two">
+      <div>
+        <OfficialLogo
+          type="safi"
+          size="large"
+          alt="Logo oficial de SAFI"
+        />
+
+        <div class="label logo-gap">SAFI / UAEMÉX</div>
+
+        <h2 class="title">
+          INGENIERÍA<br />
+          <span>HECHA POR ESTUDIANTES.</span>
+        </h2>
+      </div>
+
+      <div>
+        <p class="lead">
+          SAFI articula equipos multidisciplinarios que desarrollan sistemas
+          aeroespaciales experimentales mediante diseño, manufactura,
+          integración, pruebas y operación.
+        </p>
+
+        <p class="copy">
+          Actualmente integra a PotroRockets y al equipo CanSat.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section ecosistema">
+    <div class="container">
+      <div class="label">ECOSISTEMA SAFI</div>
+
+      <h2 class="title">
+        UNA MATRIZ.<br />
+        <span>DOS EQUIPOS ACTUALES.</span>
+      </h2>
+
+      <div class="org reveal">
+        <div class="parent">
+          <OfficialLogo
+            type="safi"
+            size="large"
+            alt="SAFI"
+          />
+
+          <small>SOCIEDAD AEROESPACIAL</small>
+          <strong>SAFI</strong>
+          <span>FACULTAD DE INGENIERÍA</span>
+        </div>
+
+        <div class="line"></div>
+
+        <div class="children">
+          <a href="/equipos/potrorockets">
+            <OfficialLogo
+              type="potrorockets"
+              size="large"
+              alt="PotroRockets"
+            />
+
+            <strong>POTROROCKETS</strong>
+            <small>COHETERÍA EXPERIMENTAL</small>
+          </a>
+
+          <a href="/equipos/cansat">
+            <OfficialLogo
+              type="cansat"
+              size="large"
+              alt="CanSat"
+            />
+
+            <strong>CANSAT</strong>
+            <small>SISTEMAS AEROESPACIALES COMPACTOS</small>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section historia" id="historia">
+    <div class="container two history-head">
+      <div>
+        <div class="label">CAMINOS RECORRIDOS</div>
+
+        <h2 class="title">
+          NUESTRA<br />
+          <span>TRAYECTORIA.</span>
+        </h2>
+      </div>
+
+      <p class="lead">
+        Los proyectos y competencias acumulados desde 2021 construyeron el
+        camino hacia las misiones actuales de SAFI.
+      </p>
+    </div>
+
+    <div class="container timeline">
+      {
+        historia.map((item) => (
+          <article class="item reveal">
+            <div class="axis">
+              <span class="marker"></span>
+              <strong>{item.year}</strong>
+            </div>
+
+            <a href={item.href} class="card">
+              <div class="meta">
+                <span>{item.tipo}</span>
+                <span>{item.competencia}</span>
+              </div>
+
+              <h3>{item.proyecto}</h3>
+              <small>{item.resultado}</small>
+              <p>{item.descripcion}</p>
+
+              <footer>
+                <span>EXPLORAR MISIÓN</span>
+                <b>↗</b>
+              </footer>
+            </a>
+          </article>
+        ))
+      }
+    </div>
+  </section>
+
+  <section class="section lema">
+    <div class="container lema-box reveal">
+      <OfficialLogo
+        type="safi"
+        size="medium"
+        alt="SAFI"
+      />
+
+      <small>SAFI / UAEMÉX</small>
+
+      <h2>
+        “AD ASTRA<br />
+        <span>PER ASPERA”</span>
+      </h2>
+
+      <p>
+        A las estrellas a través de las dificultades.
+      </p>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .two {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 100px;
+  }
+
+  .logo-gap {
+    margin-top: 28px;
+  }
+
+  .copy {
+    color: var(--muted);
+    line-height: 1.9;
+  }
+
+  .ecosistema {
+    background: #070a0f;
+  }
+
+  .org {
+    text-align: center;
+    margin-top: 60px;
+  }
+
+  .parent {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 9px;
+    padding: 30px 70px;
+    border: 1px solid var(--accent);
+    background: #080c12;
+  }
+
+  .parent > strong {
+    font: 600 34px var(--display);
+  }
+
+  .parent small,
+  .parent span,
+  .children small {
+    font: 400 7px var(--body);
+    color: var(--muted);
+    letter-spacing: .15em;
+  }
+
+  .parent small { color: var(--accent); }
+
+  .line {
+    width: 1px;
+    height: 70px;
+    margin: auto;
+    background: #39424c;
+  }
+
+  .children {
+    max-width: 950px;
+    margin: auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+
+  .children a {
+    min-height: 260px;
+    padding: 35px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--border);
+    background: #080c12;
+    color: white;
+    text-decoration: none;
+  }
+
+  .children strong {
+    margin-top: 24px;
+    font: 600 25px var(--display);
+  }
+
+  .children small {
+    margin-top: 7px;
+  }
+
+  .historia { background: var(--bg); }
+
+  .history-head {
+    align-items: end;
+    margin-bottom: 70px;
+  }
+
+  .timeline {
+    position: relative;
+  }
+
+  .timeline::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 92px;
+    width: 1px;
+    background: #303a44;
+  }
+
+  .item {
+    display: grid;
+    grid-template-columns: 140px 1fr;
+    gap: 45px;
+    padding-bottom: 55px;
+  }
+
+  .axis { position: relative; }
+
+  .axis strong {
+    color: #7b858f;
+    font: 500 17px var(--display);
+  }
+
+  .marker {
+    position: absolute;
+    top: 3px;
+    left: 86px;
+    width: 13px;
+    height: 13px;
+    background: var(--accent);
+    border: 3px solid var(--bg);
+    outline: 1px solid var(--accent);
+    transform: rotate(45deg);
+  }
+
+  .card {
+    padding: 30px;
+    border: 1px solid var(--border);
+    background: #080c12;
+    color: inherit;
+    text-decoration: none;
+  }
+
+  .meta {
+    display: flex;
+    justify-content: space-between;
+    color: #606a75;
+    font-size: 7px;
+  }
+
+  .card h3 {
+    margin: 28px 0 8px;
+    font: 600 31px var(--display);
+  }
+
+  .card > small {
+    color: var(--accent);
+    font-size: 8px;
+  }
+
+  .card p {
+    color: var(--muted);
+    font-size: 12px;
+    line-height: 1.8;
+  }
+
+  .card footer {
+    margin-top: 20px;
+    padding-top: 18px;
+    display: flex;
+    justify-content: space-between;
+    border-top: 1px solid var(--border);
+    font-size: 8px;
+  }
+
+  .lema {
+    background: #070a0f;
+  }
+
+  .lema-box {
+    padding: 90px 35px;
+    text-align: center;
+    border: 1px solid var(--border);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .lema-box > small {
+    margin-top: 24px;
+    color: var(--accent);
+    font-size: 8px;
+  }
+
+  .lema-box h2 {
+    margin: 20px 0;
+    font: 600 clamp(55px,8vw,110px)/.85 var(--display);
+  }
+
+  .lema-box h2 span {
+    color: transparent;
+    -webkit-text-stroke: 1px rgba(255,255,255,.5);
+  }
+
+  .lema-box p {
+    color: var(--muted);
+  }
+
+  @media(max-width:900px) {
+    .two { grid-template-columns: 1fr; }
+  }
+
+  @media(max-width:650px) {
+    .children { grid-template-columns: 1fr; }
+
+    .timeline::before { left: 15px; }
+
+    .item {
+      grid-template-columns: 42px 1fr;
+      gap: 15px;
+    }
+
+    .axis strong {
+      writing-mode: vertical-rl;
+      font-size: 11px;
+    }
+
+    .marker { left: 9px; }
+  }
+</style>

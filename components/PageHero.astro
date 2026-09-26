@@ -1,0 +1,127 @@
+---
+import SafeImage from "./SafeImage.astro";
+
+interface Props {
+  eyebrow: string;
+  title: string;
+  outline?: string;
+  description: string;
+  image?: string;
+}
+
+const {
+  eyebrow,
+  title,
+  outline = "",
+  description,
+  image = "/images/coming-soon.jpg"
+} = Astro.props;
+---
+
+<section class="page-hero">
+  <div class="hero-image">
+    <SafeImage
+      src={image}
+      alt=""
+      loading="eager"
+      fetchpriority="high"
+    />
+  </div>
+
+  <div class="shade"></div>
+  <div class="grid-bg"></div>
+
+  <div class="container content">
+    <span class="eyebrow">{eyebrow}</span>
+
+    <h1>
+      {title}
+
+      {
+        outline && (
+          <>
+            <br />
+            <em>{outline}</em>
+          </>
+        )
+      }
+    </h1>
+
+    <p>{description}</p>
+  </div>
+</section>
+
+<style>
+  .page-hero {
+    position: relative;
+    min-height: 72vh;
+    padding: 150px 0 75px;
+    display: flex;
+    align-items: flex-end;
+    overflow: hidden;
+    background: #05080d;
+  }
+
+  .hero-image {
+    position: absolute;
+    inset: 0;
+  }
+
+  .hero-image :global(img) {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: saturate(.78);
+  }
+
+  .shade {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background:
+      linear-gradient(0deg,#05080d 0%,rgba(5,8,13,.72) 45%,rgba(5,8,13,.3)),
+      linear-gradient(90deg,rgba(5,8,13,.75),transparent 70%);
+  }
+
+  .grid-bg {
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    opacity: .09;
+    background-image:
+      linear-gradient(rgba(255,255,255,.2) 1px,transparent 1px),
+      linear-gradient(90deg,rgba(255,255,255,.2) 1px,transparent 1px);
+    background-size: 80px 80px;
+  }
+
+  .content {
+    position: relative;
+    z-index: 3;
+  }
+
+  .eyebrow {
+    color: var(--accent);
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: .2em;
+  }
+
+  .content h1 {
+    margin: 15px 0 20px;
+    font: 600 clamp(58px,8vw,118px)/.86 var(--display);
+    letter-spacing: -.06em;
+  }
+
+  .content h1 em {
+    color: transparent;
+    font-style: normal;
+    -webkit-text-stroke: 1px rgba(255,255,255,.55);
+  }
+
+  .content p {
+    max-width: 650px;
+    color: #b3bac2;
+    font-size: 14px;
+    line-height: 1.8;
+  }
+</style>

@@ -1,0 +1,559 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import SafeImage from "../../components/SafeImage.astro";
+import OfficialLogo from "../../components/OfficialLogo.astro";
+---
+
+<Layout
+  title="AKBAL-II | SAFI"
+  description="AKBAL-II, vehículo experimental de PotroRockets para una misión objetivo de 3,000 m."
+>
+  <section class="hero">
+    <div class="image">
+      <SafeImage
+        src="/images/akbal-hero.jpg"
+        alt="AKBAL-II"
+        loading="eager"
+        fetchpriority="high"
+      />
+    </div>
+
+    <div class="shade"></div>
+    <div class="grid"></div>
+
+    <div class="container content">
+      <div class="project-logos">
+        <OfficialLogo
+          type="potrorockets"
+          size="medium"
+          alt="PotroRockets"
+        />
+
+        <OfficialLogo
+          type="safi"
+          size="small"
+          alt="SAFI"
+        />
+      </div>
+
+      <small>SAFI / POTROROCKETS / LASC 2026</small>
+
+      <h1>
+        AKBAL<br />
+        <span>II</span>
+      </h1>
+
+      <p>
+        Vehículo experimental diseñado para una misión objetivo de 3,000 m.
+      </p>
+
+      <div class="status">● VEHÍCULO DE MISIÓN</div>
+    </div>
+  </section>
+
+  <section class="section perfil">
+    <div class="container two">
+      <div>
+        <div class="label">PERFIL DE LA MISIÓN</div>
+
+        <h2 class="title">
+          3,000 m<br />
+          <span>SRM.</span>
+        </h2>
+
+        <p class="lead">
+          Vehículo diseñado para la categoría de motores de combustible sólido
+          de 3,000 m, con materiales compuestos y recuperación dual.
+        </p>
+      </div>
+
+      <div class="profile-cards">
+        <div>
+          <small>ALTITUD OBJETIVO</small>
+          <strong>3,000 m</strong>
+        </div>
+
+        <div>
+          <small>MASA AL DESPEGUE</small>
+          <strong>32.7 kg</strong>
+        </div>
+
+        <div>
+          <small>PROPULSIÓN</small>
+          <strong>SRM</strong>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section dark">
+    <div class="container two">
+      <div>
+        <div class="label">ARQUITECTURA DEL VEHÍCULO</div>
+
+        <h2 class="title">
+          ESTRUCTURA<br />
+          <span>MODULAR.</span>
+        </h2>
+
+        <p class="lead">
+          Cuatro secciones interconectadas en polímeros reforzados con fibra de
+          carbono y vidrio, orientadas a maximizar resistencia aerodinámica y
+          minimizar peso.
+        </p>
+      </div>
+
+      <div class="visual">
+        <SafeImage
+          src="/images/akbal-structure.jpg"
+          alt="Arquitectura estructural de AKBAL-II"
+        />
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container two">
+      <div class="visual">
+        <SafeImage
+          src="/images/akbal-propulsion.jpg"
+          alt="Sistema de propulsión de AKBAL-II"
+        />
+      </div>
+
+      <div>
+        <div class="label">SISTEMA DE PROPULSIÓN</div>
+
+        <h2 class="title">
+          MOTOR<br />
+          <span>CLASE M.</span>
+        </h2>
+
+        <div class="spec-grid">
+          <div><small>IMPULSO TOTAL</small><strong>9,180 N·s</strong></div>
+          <div><small>QUEMADO</small><strong>2.8 s</strong></div>
+          <div><small>EMPUJE / PESO</small><strong>10.3 : 1</strong></div>
+          <div><small>PROPELENTE</small><strong>KNSU</strong></div>
+          <div><small>MASA PROPELENTE</small><strong>8.2 kg</strong></div>
+          <div><small>GRANOS</small><strong>4</strong></div>
+        </div>
+
+        <div class="nota">
+          <p>Aislantes de fibra de vidrio.</p>
+          <p>Tobera de aluminio 7075-T6.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section dark">
+    <div class="container">
+      <div class="two">
+        <div>
+          <div class="label">AVIÓNICA Y TELEMETRÍA</div>
+
+          <h2 class="title">
+            COMPUTAR.<br />
+            <span>MEDIR. COMUNICAR.</span>
+          </h2>
+        </div>
+
+        <p class="lead">
+          La aviónica de AKBAL-II integra computadora de vuelo, sensores,
+          redundancia y un enlace de telemetría para seguimiento de misión.
+        </p>
+      </div>
+
+      <div class="three">
+        <article>
+          <span>01</span>
+          <small>COMPUTADORA DE VUELO</small>
+          <h3>Teensy 4.1</h3>
+          <p>Barómetro MS5611 e IMU MPU9250.</p>
+        </article>
+
+        <article>
+          <span>02</span>
+          <small>REDUNDANCIA</small>
+          <h3>ESP32</h3>
+          <p>Procesador auxiliar para ignición secundaria.</p>
+        </article>
+
+        <article>
+          <span>03</span>
+          <small>TELEMETRÍA</small>
+          <h3>E220-900T30D</h3>
+          <p>Enlace LoRa para GNSS y altitud en tiempo real.</p>
+        </article>
+      </div>
+
+      <div class="visual wide">
+        <SafeImage
+          src="/images/akbal-avionics.jpg"
+          alt="Aviónica de AKBAL-II"
+        />
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container two">
+      <div>
+        <div class="label">RECUPERACIÓN DUAL</div>
+
+        <h2 class="title">
+          DOS ETAPAS.<br />
+          <span>UN DESCENSO CONTROLADO.</span>
+        </h2>
+
+        <p class="lead">
+          Sistema pirotécnico en dos etapas controlado por la aviónica.
+        </p>
+
+        <div class="sequence">
+          <div>
+            <span>APOGEO</span>
+            <strong>2,995 m</strong>
+            <small>Drogue / 26.2 m/s</small>
+          </div>
+
+          <div>
+            <span>DESPLIEGUE PRINCIPAL</span>
+            <strong>500 m</strong>
+            <small>Paracaídas toroidal / 3.2 m</small>
+          </div>
+
+          <div>
+            <span>DESCENSO FINAL</span>
+            <strong>7.6 m/s</strong>
+            <small>Arnés de Kevlar / 1.5 cm</small>
+          </div>
+        </div>
+      </div>
+
+      <div class="visual">
+        <SafeImage
+          src="/images/akbal-recovery.jpg"
+          alt="Sistema de recuperación de AKBAL-II"
+        />
+      </div>
+    </div>
+  </section>
+
+  <section class="section dark">
+    <div class="container two">
+      <div class="visual">
+        <SafeImage
+          src="/images/akbal-payload.jpg"
+          alt="Levitador acústico de AKBAL-II"
+        />
+      </div>
+
+      <div>
+        <div class="label">CARGA ÚTIL EXPERIMENTAL</div>
+
+        <h2 class="title">
+          LEVITADOR<br />
+          <span>ACÚSTICO.</span>
+        </h2>
+
+        <p class="lead">
+          La carga útil investiga la estabilidad de una muestra líquida
+          levitada mediante ondas acústicas estacionarias.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container mission-box">
+      <div>
+        <div class="label">COMPETENCIA</div>
+
+        <h2>
+          LASC<br />
+          <span>2026.</span>
+        </h2>
+      </div>
+
+      <a href="/competencias/lasc-2026">
+        <span>EXPLORAR COMPETENCIA</span>
+        <b>↗</b>
+      </a>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .project-logos {
+    margin-bottom: 25px;
+    display: flex;
+    align-items: center;
+    gap: 22px;
+  }
+
+
+  .hero {
+    min-height: 92vh;
+    position: relative;
+    display: flex;
+    align-items: flex-end;
+    padding: 160px 0 70px;
+    overflow: hidden;
+  }
+
+  .image {
+    position: absolute;
+    inset: 0;
+  }
+
+  .image :global(img) {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .shade {
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(0deg,#05080d,rgba(5,8,13,.42) 65%),
+      linear-gradient(90deg,rgba(5,8,13,.84),transparent 70%);
+  }
+
+  .grid {
+    position: absolute;
+    inset: 0;
+    opacity: .08;
+    background-image:
+      linear-gradient(rgba(255,255,255,.2) 1px,transparent 1px),
+      linear-gradient(90deg,rgba(255,255,255,.2) 1px,transparent 1px);
+    background-size: 70px 70px;
+  }
+
+  .content {
+    position: relative;
+    z-index: 2;
+  }
+
+  .content small {
+    color: var(--accent);
+    font-size: 8px;
+  }
+
+  .hero h1 {
+    margin: 20px 0;
+    font: 600 clamp(100px,16vw,210px)/.7 var(--display);
+    letter-spacing: -.075em;
+  }
+
+  .hero h1 span {
+    color: transparent;
+    -webkit-text-stroke: 1px rgba(255,255,255,.55);
+  }
+
+  .hero p {
+    color: #b7bec6;
+  }
+
+  .status {
+    display: inline-block;
+    margin-top: 18px;
+    padding: 7px 9px;
+    border: 1px solid rgba(255,255,255,.2);
+    color: var(--accent);
+    font-size: 7px;
+  }
+
+  .two {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 90px;
+    align-items: center;
+  }
+
+  .profile-cards {
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+  }
+
+  .profile-cards div {
+    min-height: 230px;
+    padding: 25px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border: 1px solid var(--border);
+    background: #080c12;
+  }
+
+  .profile-cards small {
+    color: #5d6670;
+    font-size: 7px;
+  }
+
+  .profile-cards strong {
+    font: 600 30px var(--display);
+  }
+
+  .dark { background: #070a0f; }
+
+  .visual {
+    min-height: 470px;
+    border: 1px solid var(--border);
+    background: #080c12;
+    overflow: hidden;
+  }
+
+  .visual :global(img) {
+    width: 100%;
+    height: 100%;
+    min-height: 470px;
+    object-fit: cover;
+  }
+
+  .visual.wide {
+    margin-top: 50px;
+  }
+
+  .spec-grid {
+    margin-top: 35px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .spec-grid div {
+    padding: 22px;
+    border: 1px solid var(--border);
+    background: #080c12;
+  }
+
+  .spec-grid small {
+    display: block;
+    color: #59636d;
+    font-size: 7px;
+  }
+
+  .spec-grid strong {
+    display: block;
+    margin-top: 18px;
+    font: 500 18px var(--display);
+  }
+
+  .nota {
+    margin-top: 25px;
+    padding: 20px;
+    border-left: 1px solid var(--accent);
+    color: var(--muted);
+  }
+
+  .three {
+    margin-top: 55px;
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+  }
+
+  .three article {
+    min-height: 300px;
+    padding: 28px;
+    border: 1px solid var(--border);
+    background: #080c12;
+  }
+
+  .three span {
+    color: #505964;
+    font-size: 8px;
+  }
+
+  .three small {
+    display: block;
+    margin-top: 65px;
+    color: var(--accent);
+    font-size: 7px;
+  }
+
+  .three h3 {
+    margin: 8px 0 15px;
+    font: 500 23px var(--display);
+  }
+
+  .three p {
+    color: var(--muted);
+    line-height: 1.8;
+  }
+
+  .sequence {
+    margin-top: 35px;
+  }
+
+  .sequence div {
+    padding: 20px 0;
+    border-top: 1px solid var(--border);
+  }
+
+  .sequence span {
+    display: block;
+    color: var(--accent);
+    font-size: 7px;
+  }
+
+  .sequence strong {
+    display: block;
+    margin: 6px 0;
+    font: 500 25px var(--display);
+  }
+
+  .sequence small {
+    color: var(--muted);
+  }
+
+  .mission-box {
+    padding: 65px;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: center;
+    border: 1px solid var(--border);
+  }
+
+  .mission-box h2 {
+    margin: 15px 0;
+    font: 600 clamp(50px,7vw,90px)/.85 var(--display);
+  }
+
+  .mission-box h2 span {
+    color: var(--accent);
+  }
+
+  .mission-box a {
+    width: 190px;
+    height: 190px;
+    padding: 25px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background: var(--accent);
+    color: #05080d;
+    text-decoration: none;
+    font-size: 9px;
+    font-weight: 800;
+  }
+
+  .mission-box a b {
+    align-self: flex-end;
+    font-size: 28px;
+  }
+
+  @media(max-width:900px) {
+    .two,
+    .profile-cards,
+    .three,
+    .mission-box {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  @media(max-width:600px) {
+    .spec-grid { grid-template-columns: 1fr; }
+    .mission-box { padding: 35px; }
+  }
+</style>

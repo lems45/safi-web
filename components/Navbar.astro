@@ -1,0 +1,175 @@
+---
+import OfficialLogo from "./OfficialLogo.astro";
+
+const path = Astro.url.pathname;
+
+const enlaces = [
+  ["Nosotros", "/nosotros"],
+  ["Equipos", "/equipos"],
+  ["Proyectos", "/proyectos"],
+  ["Competencias", "/competencias"],
+  ["Patrocinadores", "/patrocinadores"]
+];
+
+const activo = (href: string) => path.startsWith(href);
+---
+
+<header class="nav">
+  <div class="container nav-inner">
+    <a class="brand" href="/">
+      <OfficialLogo
+        type="safi"
+        size="small"
+        alt="SAFI"
+      />
+
+      <span class="brand-text">
+        <b>SAFI</b>
+        <small>SOCIEDAD AEROESPACIAL</small>
+      </span>
+    </a>
+
+    <nav id="links">
+      {
+        enlaces.map(([etiqueta, href]) => (
+          <a
+            class:list={{ active: activo(href) }}
+            href={href}
+          >
+            {etiqueta}
+          </a>
+        ))
+      }
+    </nav>
+
+    <a class="join" href="/unete">
+      ÚNETE <span>↗</span>
+    </a>
+
+    <button id="menu" aria-label="Abrir menú">
+      <i></i>
+      <i></i>
+      <i></i>
+    </button>
+  </div>
+</header>
+
+<script>
+  const boton = document.querySelector("#menu");
+  const enlaces = document.querySelector("#links");
+
+  boton?.addEventListener("click", () => {
+    enlaces?.classList.toggle("open");
+  });
+</script>
+
+<style>
+  .nav {
+    position: fixed;
+    inset: 0 0 auto;
+    z-index: 50;
+    height: 78px;
+    background: rgba(5,8,13,.82);
+    backdrop-filter: blur(18px);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .nav-inner {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 30px;
+  }
+
+  .brand {
+    display: flex;
+    align-items: center;
+    gap: 13px;
+    color: white;
+    text-decoration: none;
+    min-width: 190px;
+  }
+
+  .brand-text {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .brand b {
+    font-family: var(--display);
+    letter-spacing: .14em;
+  }
+
+  .brand small {
+    font-size: 7px;
+    color: var(--muted);
+    letter-spacing: .18em;
+  }
+
+  nav {
+    display: flex;
+    gap: 28px;
+  }
+
+  nav a {
+    color: #a8b0ba;
+    text-decoration: none;
+    font-size: 12px;
+  }
+
+  nav a:hover,
+  nav a.active {
+    color: white;
+  }
+
+  .join {
+    padding: 11px 18px;
+    background: white;
+    color: #05080d;
+    text-decoration: none;
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: .1em;
+  }
+
+  #menu {
+    display: none;
+    background: none;
+    border: 0;
+  }
+
+  #menu i {
+    display: block;
+    width: 24px;
+    height: 2px;
+    margin: 5px;
+    background: white;
+  }
+
+  @media(max-width:980px) {
+    nav {
+      display: none;
+      position: absolute;
+      top: 78px;
+      left: 0;
+      right: 0;
+      flex-direction: column;
+      padding: 25px;
+      background: #080c12;
+      border-bottom: 1px solid var(--border);
+    }
+
+    nav.open { display: flex; }
+
+    .join { display: none; }
+
+    #menu { display: block; }
+  }
+
+  @media(max-width:480px) {
+    .brand-text small {
+      display: none;
+    }
+  }
+</style>

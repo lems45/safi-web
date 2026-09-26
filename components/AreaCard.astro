@@ -1,0 +1,121 @@
+---
+interface Props {
+  number: string;
+  title: string;
+  description: string;
+}
+
+const { number, title, description } = Astro.props;
+---
+
+<div class="area-card reveal">
+  <span class="number">{number}</span>
+
+  <div class="icon">
+    <div></div>
+  </div>
+
+  <h3>{title}</h3>
+
+  <p>{description}</p>
+
+  <a href="/areas">
+    EXPLORAR ÁREA
+    <span>→</span>
+  </a>
+</div>
+
+<style>
+  .area-card {
+    position: relative;
+
+    min-height: 300px;
+
+    padding: 28px;
+
+    border: 1px solid var(--border);
+
+    background: #080c12;
+
+    transition: .3s ease;
+  }
+
+  .area-card:hover {
+    background: #0b1017;
+
+    border-color: rgba(255,255,255,.24);
+  }
+
+  .number {
+    position: absolute;
+
+    top: 25px;
+    right: 25px;
+
+    color: #49515b;
+
+    font-size: 10px;
+  }
+
+  .icon {
+    width: 45px;
+    height: 45px;
+
+    margin-bottom: 45px;
+
+    display: grid;
+    place-items: center;
+
+    border: 1px solid #333b45;
+  }
+
+  .icon div {
+    width: 13px;
+    height: 13px;
+
+    border: 1px solid var(--accent);
+
+    transform: rotate(45deg);
+  }
+
+  h3 {
+    margin-bottom: 14px;
+
+    color: white;
+
+    font-family: "Space Grotesk";
+
+    font-size: 23px;
+  }
+
+  p {
+    color: var(--text-muted);
+
+    font-size: 12px;
+    line-height: 1.7;
+  }
+
+  a {
+    position: absolute;
+
+    bottom: 25px;
+    left: 28px;
+    right: 28px;
+
+    display: flex;
+    justify-content: space-between;
+
+    color: #7f8994;
+
+    font-size: 8px;
+    font-weight: 700;
+
+    letter-spacing: .12em;
+
+    text-decoration: none;
+  }
+
+  .area-card:hover a {
+    color: white;
+  }
+</style>

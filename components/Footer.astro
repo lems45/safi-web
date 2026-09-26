@@ -1,0 +1,146 @@
+---
+import { configuracion } from "../data/site";
+import OfficialLogo from "./OfficialLogo.astro";
+---
+
+<footer>
+  <div class="container footer-grid">
+    <div class="identity">
+      <OfficialLogo
+        type="safi"
+        size="medium"
+        alt="SAFI"
+      />
+
+      <div class="logo-text">SAFI</div>
+
+      <p class="full-name">
+        Sociedad Aeroespacial de la Facultad de Ingeniería
+      </p>
+
+      <p>
+        Organización universitaria dedicada al desarrollo de sistemas
+        aeroespaciales experimentales, formación multidisciplinaria e
+        ingeniería aplicada.
+      </p>
+
+      <div class="motto">
+        “AD ASTRA PER ASPERA”
+      </div>
+    </div>
+
+    <div>
+      <small>EXPLORA</small>
+      <a href="/nosotros">Nosotros</a>
+      <a href="/equipos">Equipos</a>
+      <a href="/proyectos">Proyectos</a>
+      <a href="/competencias">Competencias</a>
+    </div>
+
+    <div>
+      <small>PARTICIPA</small>
+      <a href="/unete">Únete a SAFI</a>
+      <a href="/patrocinadores">Patrocinadores</a>
+    </div>
+
+    <div>
+      <small>REDES</small>
+      <a
+        href={configuracion.instagram}
+        target="_blank"
+        rel="noopener"
+      >
+        Instagram ↗
+      </a>
+    </div>
+  </div>
+
+  <div class="container bottom">
+    <span>© 2026 SAFI</span>
+    <span>UNIVERSIDAD AUTÓNOMA DEL ESTADO DE MÉXICO</span>
+    <span>FACULTAD DE INGENIERÍA</span>
+  </div>
+</footer>
+
+<style>
+  footer {
+    padding: 80px 0 30px;
+    background: #030508;
+    border-top: 1px solid var(--border);
+  }
+
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 50px;
+  }
+
+  .logo-text {
+    margin-top: 18px;
+    font: 700 31px var(--display);
+    letter-spacing: .14em;
+  }
+
+  .full-name {
+    color: #d5d9dd !important;
+    font-family: var(--display);
+  }
+
+  .identity p {
+    max-width: 390px;
+    color: var(--muted);
+    font-size: 11px;
+    line-height: 1.8;
+  }
+
+  .motto {
+    margin-top: 25px;
+    color: var(--accent);
+    font: 500 10px var(--display);
+    letter-spacing: .16em;
+  }
+
+  .footer-grid > div:not(:first-child) {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .footer-grid small {
+    color: #59616b;
+    font-size: 8px;
+    letter-spacing: .16em;
+  }
+
+  .footer-grid a {
+    color: #a6aeb7;
+    text-decoration: none;
+    font-size: 12px;
+  }
+
+  .bottom {
+    margin-top: 60px;
+    padding-top: 22px;
+    border-top: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    color: #505862;
+    font-size: 8px;
+    letter-spacing: .1em;
+  }
+
+  @media(max-width:750px) {
+    .footer-grid {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .bottom {
+      flex-direction: column;
+      gap: 8px;
+    }
+  }
+
+  @media(max-width:500px) {
+    .footer-grid { grid-template-columns: 1fr; }
+  }
+</style>
