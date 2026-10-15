@@ -39,7 +39,7 @@ img {
 }
 
 .section {
-  padding: 115px 0;
+  padding: 100px 0;
 }
 
 .label {
@@ -47,7 +47,7 @@ img {
   align-items: center;
   gap: 12px;
   color: var(--accent);
-  font-size: 9px;
+  font-size: 11px;
   font-weight: 700;
   letter-spacing: .18em;
 }
@@ -65,7 +65,7 @@ img {
   letter-spacing: -.045em;
 }
 
-.title span { color: #5e6670; }
+.title span { color: #76818e; }
 
 .lead {
   max-width: 680px;
@@ -74,13 +74,13 @@ img {
   line-height: 1.8;
 }
 
-.reveal {
+.js .reveal {
   opacity: 0;
   transform: translateY(22px);
-  transition: .7s;
+  transition: opacity .7s, transform .7s;
 }
 
-.reveal.visible {
+.js .reveal.visible {
   opacity: 1;
   transform: none;
 }
@@ -93,12 +93,18 @@ img {
   background: white;
   color: #05080d;
   text-decoration: none;
-  font-size: 9px;
+  font-size: 11px;
   font-weight: 800;
   letter-spacing: .11em;
 }
 
-.button:hover { background: var(--accent); }
+.button { transition: background .25s, transform .25s, box-shadow .25s; }
+
+.button:hover {
+  background: var(--accent);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 30px rgba(115,255,157,.25);
+}
 
 .button.ghost {
   background: transparent;
@@ -120,4 +126,42 @@ img {
   .section { padding: 80px 0; }
 
   .grid-2 { grid-template-columns: 1fr; }
+}
+
+/* ---------- Accesibilidad ---------- */
+
+.skip-link {
+  position: fixed;
+  top: 12px;
+  left: 12px;
+  z-index: 100;
+  padding: 12px 18px;
+  background: var(--accent);
+  color: #05080d;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: .08em;
+  text-decoration: none;
+  transform: translateY(-200%);
+}
+
+.skip-link:focus { transform: none; }
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+
+main:focus { outline: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .01ms !important;
+  }
 }

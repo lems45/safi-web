@@ -14,7 +14,7 @@ export function getStaticPaths() {
 }
 
 const { proyecto } = Astro.props;
-const logoEquipo = proyecto.equipo === "PotroRockets" ? "potrorockets" : "cansat";
+const logoEquipo = proyecto.equipo === "PotroRockets" ? "potrorockets" : "dyson_swarm";
 ---
 
 <Layout
@@ -155,7 +155,7 @@ const logoEquipo = proyecto.equipo === "PotroRockets" ? "potrorockets" : "cansat
 
   .content > small {
     color: var(--accent);
-    font-size: 8px;
+    font-size: 11px;
   }
 
   .content h1 {
@@ -174,7 +174,7 @@ const logoEquipo = proyecto.equipo === "PotroRockets" ? "potrorockets" : "cansat
     margin-top: 15px;
     padding: 7px 9px;
     border: 1px solid #46505a;
-    font-size: 8px;
+    font-size: 11px;
   }
 
   .specs {
@@ -192,7 +192,7 @@ const logoEquipo = proyecto.equipo === "PotroRockets" ? "potrorockets" : "cansat
   .specs small {
     display: block;
     color: #5d6670;
-    font-size: 7px;
+    font-size: 11px;
   }
 
   .specs b {
@@ -217,7 +217,7 @@ const logoEquipo = proyecto.equipo === "PotroRockets" ? "potrorockets" : "cansat
 
   .systems-grid span {
     color: #505964;
-    font-size: 8px;
+    font-size: 11px;
   }
 
   .systems-grid h3 {

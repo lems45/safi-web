@@ -2,7 +2,7 @@ Coloca aquí exactamente estos tres archivos:
 
 safi.png
 potrorockets.png
-cansat.png
+dyson_swarm.png
 
 No es necesario modificar el código.
 

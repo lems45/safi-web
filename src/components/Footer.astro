@@ -23,14 +23,16 @@ import { withBase } from "../utils/base";
     </div>
 
     <div>
-      <small>PARTICIPA</small>
+      <small>EQUIPOS</small>
+      <a href={withBase("/equipos/potrorockets")}>PotroRockets</a>
+      <a href={withBase("/equipos/dyson_swarm")}>Dyson Swarm</a>
       <a href={withBase("/unete")}>Únete a SAFI</a>
-      <a href={withBase("/patrocinadores")}>Patrocinadores</a>
     </div>
 
     <div>
       <small>REDES</small>
       <a href={configuracion.instagram} target="_blank" rel="noopener">Instagram ↗</a>
+      <a href={withBase("/patrocinadores")}>Patrocinadores</a>
     </div>
   </div>
 
@@ -47,11 +49,11 @@ import { withBase } from "../utils/base";
   .logo-text { margin-top:18px; font:700 31px var(--display); letter-spacing:.14em; }
   .full-name { color:#d5d9dd !important; font-family:var(--display); }
   .identity p { max-width:390px; color:var(--muted); font-size:11px; line-height:1.8; }
-  .motto { margin-top:25px; color:var(--accent); font:500 10px var(--display); letter-spacing:.16em; }
+  .motto { margin-top:25px; color:var(--accent); font:500 11px var(--display); letter-spacing:.16em; }
   .footer-grid > div:not(:first-child) { display:flex; flex-direction:column; gap:12px; }
-  .footer-grid small { color:#59616b; font-size:8px; letter-spacing:.16em; }
+  .footer-grid small { color:#59616b; font-size:11px; letter-spacing:.16em; }
   .footer-grid a { color:#a6aeb7; text-decoration:none; font-size:12px; }
-  .bottom { margin-top:60px; padding-top:22px; border-top:1px solid var(--border); display:flex; justify-content:space-between; color:#505862; font-size:8px; letter-spacing:.1em; }
+  .bottom { margin-top:60px; padding-top:22px; border-top:1px solid var(--border); display:flex; justify-content:space-between; color:#505862; font-size:11px; letter-spacing:.1em; }
   @media(max-width:750px) { .footer-grid { grid-template-columns:1fr 1fr; } .bottom { flex-direction:column; gap:8px; } }
   @media(max-width:500px) { .footer-grid { grid-template-columns:1fr; } }
 </style>

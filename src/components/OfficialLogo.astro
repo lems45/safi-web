@@ -2,7 +2,7 @@
 import { withBase } from "../utils/base";
 
 interface Props {
-  type: "safi" | "potrorockets" | "cansat";
+  type: "safi" | "potrorockets" | "dyson_swarm";
   alt?: string;
   class?: string;
   size?: "small" | "medium" | "large" | "hero";
@@ -22,7 +22,7 @@ const {
 const logos = {
   safi: { src: "/images/logos/safi.png", alt: "Logo oficial de SAFI" },
   potrorockets: { src: "/images/logos/potrorockets.png", alt: "Logo oficial de PotroRockets" },
-  cansat: { src: "/images/logos/cansat.png", alt: "Logo oficial de CanSat" }
+  dyson_swarm: { src: "/images/logos/dyson_swarm.png", alt: "Logo oficial de Dyson Swarm" }
 };
 
 const logo = logos[type];

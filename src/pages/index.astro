@@ -2,9 +2,18 @@
 import Layout from "../layouts/Layout.astro";
 import SafeImage from "../components/SafeImage.astro";
 import ProjectCard from "../components/ProjectCard.astro";
+import OfficialLogo from "../components/OfficialLogo.astro";
 import { equipos, proyectos } from "../data/site";
 import { historia } from "../data/history";
+import { competencias } from "../data/competitions";
 import { withBase } from "../utils/base";
+
+const cifras = [
+  { valor: `Desde ${historia[0].year}`, texto: `Primera misión: ${historia[0].proyecto}` },
+  { valor: String(competencias.length), texto: "Competencias" },
+  { valor: String(equipos.length), texto: "Equipos" },
+  { valor: String(proyectos.length), texto: "Proyectos" }
+];
 ---
 
 <Layout
@@ -12,16 +21,7 @@ import { withBase } from "../utils/base";
   description="SAFI es la Sociedad Aeroespacial de la Facultad de Ingeniería de la Universidad Autónoma del Estado de México."
 >
   <section class="home">
-    <div class="home-image">
-      <SafeImage
-        src="/images/safi-hero.jpg"
-        alt="SAFI"
-        loading="eager"
-        fetchpriority="high"
-      />
-    </div>
-
-    <div class="shade"></div>
+    <div class="glow"></div>
     <div class="grid"></div>
 
     <div class="container hero">
@@ -51,6 +51,16 @@ import { withBase } from "../utils/base";
           <a class="button ghost" href={withBase("/unete")}>ÚNETE</a>
         </div>
       </div>
+
+      <div class="hero-visual">
+        <figure>
+          <SafeImage
+            src="/images/safi-hero.jpg"
+            alt="Cohete de PotroRockets en la rampa de lanzamiento"
+            loading="eager"
+            fetchpriority="high"
+          />
+        </figure>
 
       <aside>
         <small>
@@ -86,6 +96,20 @@ import { withBase } from "../utils/base";
           EXPLORAR MISIÓN →
         </a>
       </aside>
+      </div>
+    </div>
+  </section>
+
+  <section class="stats" aria-label="SAFI en cifras">
+    <div class="container stats-grid">
+      {
+        cifras.map((c) => (
+          <div class="stat">
+            <strong>{c.valor}</strong>
+            <span>{c.texto}</span>
+          </div>
+        ))
+      }
     </div>
   </section>
 
@@ -101,7 +125,7 @@ import { withBase } from "../utils/base";
       </div>
 
       <p class="lead">
-        Actualmente SAFI integra a PotroRockets y al equipo CanSat. Ambos
+        Actualmente SAFI integra dos equipos: PotroRockets y Dyson Swarm. Este último se especializa en misiones CanSat. Ambos
         desarrollan plataformas distintas, pero comparten conocimiento,
         infraestructura y una misma cultura de ingeniería.
       </p>
@@ -112,15 +136,25 @@ import { withBase } from "../utils/base";
         equipos.map((equipo, index) => (
           <a class="team reveal" href={withBase(`/equipos/${equipo.slug}`)}>
             <span>0{index + 1}</span>
-            <small>{equipo.subtitulo}</small>
-            <h3>{equipo.nombre}</h3>
-            <p>{equipo.descripcion}</p>
-
-            <div class="chips">
-              {equipo.areas.map((area) => <i>{area}</i>)}
+            <div class="team-img">
+              <SafeImage src={equipo.imagen} alt={equipo.nombre} />
             </div>
+            <div class="team-body">
+              <OfficialLogo
+                type={equipo.slug === "potrorockets" ? "potrorockets" : "dyson_swarm"}
+                size="medium"
+                alt={equipo.nombre}
+              />
+              <small>{equipo.subtitulo}</small>
+              <h3>{equipo.nombre}</h3>
+              <p>{equipo.descripcion}</p>
 
-            <b>EXPLORAR EQUIPO ↗</b>
+              <div class="chips">
+                {equipo.areas.map((area) => <i>{area}</i>)}
+              </div>
+
+              <b>EXPLORAR EQUIPO ↗</b>
+            </div>
           </a>
         ))
       }
@@ -289,7 +323,7 @@ import { withBase } from "../utils/base";
 
   .eyebrow {
     color: var(--accent);
-    font-size: 8px;
+    font-size: 11px;
     letter-spacing: .17em;
   }
 
@@ -335,7 +369,7 @@ import { withBase } from "../utils/base";
     display: flex;
     justify-content: space-between;
     color: #68717c;
-    font-size: 7px;
+    font-size: 11px;
     letter-spacing: .12em;
   }
 
@@ -366,7 +400,7 @@ import { withBase } from "../utils/base";
 
   dt {
     color: #626b76;
-    font-size: 7px;
+    font-size: 11px;
   }
 
   dd {
@@ -379,7 +413,7 @@ import { withBase } from "../utils/base";
     margin-top: 20px;
     color: #cbd1d7;
     text-decoration: none;
-    font-size: 8px;
+    font-size: 11px;
   }
 
   .section-head {
@@ -413,12 +447,12 @@ import { withBase } from "../utils/base";
     position: absolute;
     right: 28px;
     color: #4e5761;
-    font-size: 9px;
+    font-size: 11px;
   }
 
   .team small {
     color: var(--accent);
-    font-size: 8px;
+    font-size: 11px;
   }
 
   .team h3 {
@@ -443,14 +477,14 @@ import { withBase } from "../utils/base";
     padding: 7px 9px;
     border: 1px solid #313a44;
     color: #aab2bb;
-    font-size: 7px;
+    font-size: 11px;
     font-style: normal;
   }
 
   .team b {
     margin-top: auto;
     padding-top: 25px;
-    font-size: 8px;
+    font-size: 11px;
   }
 
   .trayectoria,
@@ -503,7 +537,7 @@ import { withBase } from "../utils/base";
   .mini-timeline small {
     margin-top: 6px;
     color: #767f89;
-    font-size: 8px;
+    font-size: 11px;
   }
 
   .comp-grid {
@@ -571,7 +605,7 @@ import { withBase } from "../utils/base";
     background: var(--accent);
     color: #05080d;
     text-decoration: none;
-    font-size: 10px;
+    font-size: 11px;
     font-weight: 800;
   }
 
@@ -603,5 +637,164 @@ import { withBase } from "../utils/base";
     .mini-timeline { grid-template-columns: repeat(2,1fr); }
     .actions { flex-direction: column; align-items: flex-start; }
     .comp-copy, .cta { padding: 35px; }
+  }
+
+  /* ===== Rediseño visual ===== */
+  .home {
+    padding: 120px 0 80px;
+    background:
+      radial-gradient(ellipse 60% 55% at 82% 28%, rgba(115,255,157,.13), transparent 70%),
+      radial-gradient(ellipse 50% 50% at 8% 95%, rgba(70,120,255,.12), transparent 70%),
+      var(--bg);
+  }
+
+  .home .grid {
+    opacity: .11;
+    -webkit-mask-image: radial-gradient(ellipse at 70% 40%, #000 15%, transparent 75%);
+    mask-image: radial-gradient(ellipse at 70% 40%, #000 15%, transparent 75%);
+  }
+
+  .hero {
+    grid-template-columns: 1.1fr .9fr;
+    gap: 72px;
+    padding-top: 0;
+  }
+
+  .hero h1 {
+    font-size: clamp(50px, 6vw, 92px);
+  }
+
+  .hero h1 em { -webkit-text-stroke: 1px rgba(255,255,255,.75); }
+
+  .hero-visual { position: relative; }
+
+  .hero-visual figure {
+    position: relative;
+    height: min(74vh, 680px);
+    min-height: 460px;
+    margin: 0;
+    overflow: hidden;
+    border: 1px solid rgba(255,255,255,.16);
+    box-shadow: 0 30px 80px rgba(0,0,0,.55), 0 0 0 8px rgba(255,255,255,.025);
+  }
+
+  .hero-visual figure::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, transparent 55%, rgba(5,8,13,.75));
+  }
+
+  .hero-visual figure :global(img) {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: 50% 22%;
+  }
+
+  .hero .hero-visual aside {
+    position: absolute;
+    z-index: 2;
+    left: -64px;
+    bottom: 34px;
+    width: 310px;
+    background: rgba(8,12,18,.9);
+    border-color: rgba(115,255,157,.35);
+    box-shadow: 0 20px 50px rgba(0,0,0,.5);
+  }
+
+  .hero .hero-visual aside h2 { font-size: 30px; margin-top: 18px; padding-bottom: 16px; }
+  .hero .hero-visual aside dl div { padding: 13px 0; }
+
+  .stats {
+    border-block: 1px solid var(--border);
+    background: #070b11;
+  }
+
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .stat {
+    padding: 38px 30px;
+    border-left: 1px solid var(--border);
+  }
+
+  .stat:first-child { border-left: 0; padding-left: 0; }
+
+  .stat strong {
+    display: block;
+    font: 600 clamp(34px, 4vw, 52px)/1 var(--display);
+    letter-spacing: -.04em;
+    color: var(--accent);
+  }
+
+  .stat span {
+    display: block;
+    margin-top: 10px;
+    color: var(--muted);
+    font-size: 12px;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+  }
+
+  .team {
+    min-height: 0;
+    padding: 0;
+    overflow: hidden;
+    transition: border-color .3s, transform .3s;
+  }
+
+  .team:hover { border-color: rgba(115,255,157,.45); transform: translateY(-4px); }
+
+  .team > span {
+    top: 18px;
+    right: 18px;
+    z-index: 2;
+    padding: 5px 9px;
+    color: #fff;
+    background: rgba(5,8,13,.7);
+    border: 1px solid rgba(255,255,255,.2);
+  }
+
+  .team-img { height: 240px; overflow: hidden; background: #05080d; }
+
+  .team-img :global(img) {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: 50% 40%;
+    transition: transform .6s;
+  }
+
+  .team:hover .team-img :global(img) { transform: scale(1.05); }
+
+  .team-body :global(.official-logo) {
+    margin-bottom: 16px;
+  }
+
+  .team-body {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 30px 35px 35px;
+  }
+
+  @media (max-width: 980px) {
+    .home { padding: 100px 0 60px; }
+    .hero { grid-template-columns: 1fr; gap: 40px; }
+    .hero-visual figure { height: 420px; min-height: 0; }
+    .hero .hero-visual aside {
+      position: relative;
+      left: auto;
+      bottom: auto;
+      width: auto;
+      margin: -70px 16px 0;
+    }
+    .stats-grid { grid-template-columns: 1fr 1fr; }
+    .stat { padding: 28px 20px; }
+    .stat:nth-child(odd) { border-left: 0; padding-left: 0; }
+    .stat:nth-child(n+3) { border-top: 1px solid var(--border); }
   }
 </style>

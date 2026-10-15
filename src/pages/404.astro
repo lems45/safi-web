@@ -1,0 +1,32 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { withBase } from "../utils/base";
+---
+
+<Layout title="Página no encontrada | SAFI" description="La ruta solicitada no existe en el sitio de SAFI.">
+  <section class="not-found">
+    <div class="grid"></div>
+    <div class="container content">
+      <span>ERROR / 404</span>
+      <h1>RUTA NO<br /><em>ENCONTRADA.</em></h1>
+      <p>La página pudo cambiar de dirección o todavía no está disponible. Puedes volver al inicio o explorar los equipos actuales de SAFI.</p>
+      <div class="actions">
+        <a class="primary" href={withBase("/")}>VOLVER AL INICIO →</a>
+        <a href={withBase("/equipos")}>VER EQUIPOS</a>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .not-found { position:relative; min-height:78vh; display:grid; place-items:center; overflow:hidden; padding:130px 0 80px; background:radial-gradient(circle at 70% 40%,rgba(115,255,157,.09),transparent 34%),#05080d; }
+  .grid { position:absolute; inset:0; opacity:.09; background-image:linear-gradient(rgba(115,255,157,.25) 1px,transparent 1px),linear-gradient(90deg,rgba(115,255,157,.25) 1px,transparent 1px); background-size:70px 70px; }
+  .content { position:relative; z-index:1; }
+  .content > span { color:var(--accent); font:700 11px monospace; letter-spacing:.18em; }
+  h1 { margin:22px 0 30px; font:700 clamp(4rem,10vw,9rem)/.78 var(--display); letter-spacing:-.065em; }
+  h1 em { color:transparent; font-style:normal; -webkit-text-stroke:1px rgba(244,245,246,.4); }
+  p { max-width:630px; color:var(--muted); font-size:14px; line-height:1.85; }
+  .actions { display:flex; gap:12px; flex-wrap:wrap; margin-top:32px; }
+  .actions a { padding:13px 18px; border:1px solid var(--border); color:var(--text); text-decoration:none; font-size:11px; font-weight:800; letter-spacing:.1em; }
+  .actions .primary { background:var(--accent); border-color:var(--accent); color:#05080d; }
+</style>

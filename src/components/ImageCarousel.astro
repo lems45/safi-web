@@ -89,8 +89,11 @@ const preparedImages = images.map((image) => ({
       if (current) current.textContent = String(index + 1).padStart(2, "0");
     };
 
+    const sinMovimiento = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
     const iniciar = () => {
       if (timer) window.clearInterval(timer);
+      if (sinMovimiento) return;
       timer = window.setInterval(() => mostrar(index + 1), interval);
     };
 
@@ -122,12 +125,12 @@ const preparedImages = images.map((image) => ({
   .image-wrapper img { width:100%; height:100%; object-fit:contain; object-position:center; filter:saturate(.86); }
   .overlay { position:absolute; inset:0; z-index:2; background:linear-gradient(0deg,rgba(5,8,13,.9),transparent 38%); pointer-events:none; }
   .caption { position:absolute; left:30px; bottom:28px; z-index:3; display:flex; align-items:center; gap:18px; }
-  .caption span { color:var(--accent); font-size:9px; font-weight:700; }
+  .caption span { color:var(--accent); font-size:11px; font-weight:700; }
   .caption p { margin:0; font:500 17px var(--display); }
   .arrow { position:absolute; top:50%; z-index:5; width:48px; height:48px; border:1px solid rgba(255,255,255,.25); color:white; background:rgba(5,8,13,.55); transform:translateY(-50%); cursor:pointer; }
   .arrow:hover { color:#05080d; background:var(--accent); }
   .prev { left:20px; } .next { right:20px; }
-  .counter { position:absolute; right:25px; bottom:25px; z-index:5; display:flex; gap:5px; color:#818a94; font-size:9px; }
+  .counter { position:absolute; right:25px; bottom:25px; z-index:5; display:flex; gap:5px; color:#818a94; font-size:11px; }
   .counter .current { color:white; }
   .dots { display:flex; justify-content:center; gap:8px; margin-top:14px; }
   .dot { width:24px; height:2px; padding:0; border:0; background:#333b44; cursor:pointer; }

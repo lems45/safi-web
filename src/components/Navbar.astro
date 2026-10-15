@@ -26,10 +26,14 @@ const activo = (href: string) => path.startsWith(href);
       </span>
     </a>
 
-    <nav id="links">
+    <nav id="links" aria-label="Principal">
       {
         enlaces.map(([etiqueta, href]) => (
-          <a class:list={{ active: activo(href) }} href={href}>
+          <a
+            class:list={{ active: activo(href) }}
+            href={href}
+            aria-current={activo(href) ? "page" : undefined}
+          >
             {etiqueta}
           </a>
         ))
@@ -40,16 +44,43 @@ const activo = (href: string) => path.startsWith(href);
       ÚNETE <span>↗</span>
     </a>
 
-    <button id="menu" aria-label="Abrir menú">
+    <button
+      id="menu"
+      type="button"
+      aria-label="Abrir menú"
+      aria-controls="links"
+      aria-expanded="false"
+    >
       <i></i><i></i><i></i>
     </button>
   </div>
 </header>
 
 <script>
-  const boton = document.querySelector("#menu");
-  const enlaces = document.querySelector("#links");
-  boton?.addEventListener("click", () => enlaces?.classList.toggle("open"));
+  const boton = document.querySelector<HTMLButtonElement>("#menu");
+  const enlaces = document.querySelector<HTMLElement>("#links");
+
+  const alternar = (abrir: boolean) => {
+    enlaces?.classList.toggle("open", abrir);
+    boton?.setAttribute("aria-expanded", String(abrir));
+    boton?.setAttribute("aria-label", abrir ? "Cerrar menú" : "Abrir menú");
+  };
+
+  boton?.addEventListener("click", () =>
+    alternar(!enlaces?.classList.contains("open"))
+  );
+
+  // Cierra el menú móvil al elegir un enlace o al pulsar Escape.
+  enlaces?.addEventListener("click", (evento) => {
+    if ((evento.target as HTMLElement).closest("a")) alternar(false);
+  });
+
+  document.addEventListener("keydown", (evento) => {
+    if (evento.key === "Escape" && enlaces?.classList.contains("open")) {
+      alternar(false);
+      boton?.focus();
+    }
+  });
 </script>
 
 <style>
@@ -58,11 +89,11 @@ const activo = (href: string) => path.startsWith(href);
   .brand { display:flex; align-items:center; gap:13px; color:white; text-decoration:none; min-width:190px; }
   .brand-text { display:flex; flex-direction:column; }
   .brand b { font-family:var(--display); letter-spacing:.14em; }
-  .brand small { font-size:7px; color:var(--muted); letter-spacing:.18em; }
+  .brand small { font-size:11px; color:var(--muted); letter-spacing:.18em; }
   nav { display:flex; gap:28px; }
   nav a { color:#a8b0ba; text-decoration:none; font-size:12px; }
   nav a:hover, nav a.active { color:white; }
-  .join { padding:11px 18px; background:white; color:#05080d; text-decoration:none; font-size:10px; font-weight:800; letter-spacing:.1em; }
+  .join { padding:11px 18px; background:white; color:#05080d; text-decoration:none; font-size:11px; font-weight:800; letter-spacing:.1em; }
   #menu { display:none; background:none; border:0; }
   #menu i { display:block; width:24px; height:2px; margin:5px; background:white; }
   @media(max-width:980px) {

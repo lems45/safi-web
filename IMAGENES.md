@@ -8,7 +8,7 @@ No es necesario tenerlas todas desde el principio. Si falta alguna, aparecerá
 - team-safi.jpg
 - teams-hero.jpg
 - team-potrorockets.jpg
-- team-cansat.jpg
+- dyson-swarm-hero.jpg
 - projects-hero.jpg
 - sponsors-hero.jpg
 - join-hero.jpg

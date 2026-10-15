@@ -59,7 +59,7 @@ reales gradualmente.
 - Nosotros
 - Equipos
   - PotroRockets
-  - CanSat
+  - Dyson Swarm (misiones CanSat)
 - Proyectos
   - AKBAL-II
   - Cohete híbrido
@@ -82,7 +82,7 @@ Coloca exactamente estos archivos:
 
 - `public/images/logos/safi.png`
 - `public/images/logos/potrorockets.png`
-- `public/images/logos/cansat.png`
+- `public/images/logos/dyson_swarm.png`
 
 No necesitas modificar ningún archivo de código.
 

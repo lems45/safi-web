@@ -20,7 +20,7 @@ const esCansat =
   competencia.mision.toLowerCase().includes("cansat") ||
   competencia.vehiculo.toLowerCase().includes("satbee");
 
-const logoEquipo = esCansat ? "cansat" : "potrorockets";
+const logoEquipo = esCansat ? "dyson_swarm" : "potrorockets";
 
 const imagenes = competencia.galeria.map((src, index) => ({
   src,
@@ -50,7 +50,7 @@ const imagenes = competencia.galeria.map((src, index) => ({
         <OfficialLogo
           type={logoEquipo}
           size="medium"
-          alt={esCansat ? "CanSat" : "PotroRockets"}
+          alt={esCansat ? "Dyson Swarm" : "PotroRockets"}
         />
 
         <OfficialLogo
@@ -171,7 +171,7 @@ const imagenes = competencia.galeria.map((src, index) => ({
 
   .content > small {
     color: var(--accent);
-    font-size: 8px;
+    font-size: 11px;
   }
 
   .content h1 {
@@ -188,7 +188,7 @@ const imagenes = competencia.galeria.map((src, index) => ({
     padding: 7px 9px;
     border: 1px solid rgba(255,255,255,.22);
     color: var(--accent);
-    font-size: 7px;
+    font-size: 11px;
   }
 
   .copy {
@@ -213,7 +213,7 @@ const imagenes = competencia.galeria.map((src, index) => ({
   .stats small {
     display: block;
     color: #59626d;
-    font-size: 7px;
+    font-size: 11px;
   }
 
   .stats strong {

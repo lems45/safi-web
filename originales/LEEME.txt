@@ -1,0 +1,2 @@
+Archivos PNG originales que no usa el sitio. Se guardan aquí para no desplegarlos en GitHub Pages.
+Si necesitas alguno, copia una versión JPG optimizada a public/images/.
