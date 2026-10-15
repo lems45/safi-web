@@ -21,12 +21,12 @@ export const equipos = [
     ]
   },
   {
-    slug: "dyson_swarm",
-    nombre: "Dyson Swarm",
-    subtitulo: "SATÉLITES ENLATADOS",
+    slug: "cansat",
+    nombre: "CanSat",
+    subtitulo: "SISTEMAS AEROESPACIALES COMPACTOS",
     descripcion:
       "Equipo SAFI dedicado al desarrollo de plataformas CanSat, electrónica, comunicaciones, sensores, software y misiones experimentales.",
-    imagen: "/images/dyson_team.jpg",
+    imagen: "/images/team-cansat.jpg",
     areas: [
       "Electrónica",
       "Sensores",
@@ -118,7 +118,35 @@ export const proyectos = [
       ["Seguridad", "Pruebas progresivas y modos de contingencia."]
     ]
   },
-
+  {
+    slug: "cansat",
+    equipo: "CanSat",
+    categoria: "SISTEMAS AEROESPACIALES COMPACTOS",
+    titulo: "CanSat",
+    estado: "ACTIVO",
+    imagen: "/images/project-cansat.jpg",
+    hero: "/images/cansat-hero.jpg",
+    resumen:
+      "Plataforma compacta para desarrollar misiones de sensado, comunicaciones y sistemas aeroespaciales.",
+    descripcion:
+      "El programa CanSat permite desarrollar ciclos completos de misión en una plataforma compacta: requisitos, electrónica, energía, comunicaciones, software, integración y recuperación.",
+    especificaciones: [
+      ["PLATAFORMA", "CanSat"],
+      ["MISIÓN", "Experimental"],
+      ["AVIÓNICA", "Integrada"],
+      ["COMUNICACIONES", "Telemetría"],
+      ["SOFTWARE", "Misión y tierra"],
+      ["ESTADO", "Activo"]
+    ],
+    sistemas: [
+      ["Aviónica", "Computadora de misión y electrónica embarcada."],
+      ["Sensores", "Adquisición de variables relevantes para la misión."],
+      ["Comunicaciones", "Enlace entre plataforma y estación terrestre."],
+      ["Software", "Firmware, procesamiento, visualización y lógica de misión."],
+      ["Energía", "Distribución y administración eléctrica."],
+      ["Integración", "Validación del sistema completo antes de la misión."]
+    ]
+  }
 ];
 
 export const reclutamiento = {
